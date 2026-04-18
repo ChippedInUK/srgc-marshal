@@ -1,173 +1,768 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0046)file:///C:/Users/david/Downloads/index_10.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>SRGC Marshal Tracker — 18 Apr 2026</title>
+<title>SRGC · Pace of Play</title>
+<script>
+window.TEESHEET_DATE = "2026-04-18";
+window.TEESHEET_LABEL = "Saturday 18 April 2026";
+window.TEESHEET = [{time:"06:45",players:["Michael Heath","Martin Kerry"],section:"Morning Wave"},{time:"06:53",players:["Mark Schiavi","David Doncaster","Paul Thistlewood","Ian Bruce"]},{time:"07:01",players:["Stan Watson","Sam Duxbry"]},{time:"07:09",players:["Martin Harvey","Ben Harvey","George Beadle","Liam Gales"]},{time:"07:17",players:["Leo Novakovic","Tom Edmondson Matthews","Michail Michailou"]},{time:"07:25",players:["Michael Killen","Jonathan Green"]},{time:"07:33",players:["David Hardingham","Peter Atkinson","Clive Breedon","Phil Hewes"]},{time:"07:41",players:["Andrew Gordon","Liam Waddingham","Mark Kokocinski","Julian Smith"]},{time:"07:49",players:["Steve Roffe","Jonathan Brett","Oliver Brett","James Roffe"]},{time:"07:57",players:["David Ramshaw","Nick Begy","Simon Morley","Graeme North"]},{time:"08:05",players:["Mark Durno","Mark Owen","Max Braime","James Delplanque"]},{time:"08:13",players:["John Elliott","Angus Owen","Paul Hutchings","Jason Jones"]},{time:"08:21",players:["Riley Haw","Robin Harris","Stephen Hutchings","Taylor Simpson"]},{time:"08:29",players:["Richard Dexter","Robert Griffin","Scott Budding","Ian Braime"]},{time:"08:37",players:["David Simpson","Neil Tee-Boon","Martin Harris","Kevin Haw"]},{time:"08:45",players:["Andrew Tildesley","David McKendrick"]},{time:"08:53",players:["Mike Catlin","Chris Vose"]},{time:"09:01",players:["Antony Dawson","Eddie Oswin","Malcolm Williams","Antony Halls"]},{time:"09:09",players:[]},{time:"09:17",players:["Roy Thompson","James Morgan","Mark Jordan","Garry Sentance"]},{time:"09:25",players:["Richard Morris","Jill Morris","David Hallam","Tim Parr"]},{time:"09:33",players:["Brian Draper","Alan Church"]},{time:"09:41",players:["Ian Hickman","Stephen Burton","Andrew Spencer","Tim Kimm"]},{time:"09:49",players:["Bert Tregidgo","Jim McArthur","Arthur Wheeler"]},{time:"09:57",players:["Thomas Greenfield","Nick Watson","Oliver Hand","Adam Footitt"]},{time:"10:05",players:["Roger Rawson","Daniel Ellington","Thomas Rigby","Rory Thomson"]},{time:"10:13",players:["Ben Rawson","Max Braime","Oliver Brewill","Matthew Brewill"]},{time:"10:21",players:["Andrew Queen","Mark Goodwin","Nigel Illingworth","Peter Sargent"]},{time:"10:29",players:["Simon Mulvey","Paul Knapp","Robert Clifton","Asa Lowther"]},{time:"10:37",players:["David Esswood","Brian Ayto","Michael Legge","Peter Jaggard"]},{time:"10:45",players:["Mark Bailey","Andrew Burley","James Burley","Nicholas Croft"]},{time:"10:53",players:["Anthony Meakin","Steve Cawser","Martin Cawser","Jay Trussler"]},{time:"11:01",players:["Jake Wilson","Maxim Green","George Mann"]},{time:"11:09",players:[],reserved:"Reserved for Turnor Cup (M)",section:"Turnor Cup"},{time:"11:17",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"11:25",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"11:33",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"11:41",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"11:49",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"11:57",players:[],reserved:"Reserved for Turnor Cup (M)"},{time:"12:05",players:["Joe Jacobs","Guest Player","Guest Player","Guest Player"],section:"Afternoon"},{time:"12:13",players:["Jim Broell","Guest Player","Guest Player","Guest Player"]},{time:"12:21",players:["Simon Hodgson","Mark Tinkler","Alistair Brook","Mark Worthington"]},{time:"12:29",players:["Garreth Smith","Jake Smith","Luke Smith"]},{time:"12:37",players:["Harry Nicholls","James Turnbull","Andrew Watson"]}];
+</script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#1f6b3a;--green-light:#52b788;--green-bg:#e8f5ee;
-  --amber:#d97706;--amber-bg:#fef3c7;
-  --red:#b91c1c;--red-bg:#fee2e2;
-  --grey:#6b7280;--grey-bg:#f3f4f6;
-  --bg:#f0f4f1;--card:#fff;--text:#111827;--muted:#6b7280;
-  --border:#e5e7eb;--header:#0f2d1a;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+  --ink:    #1c2b1e;
+  --green:  #2d6a4f;
+  --mid:    #52b788;
+  --pale:   #d8f3dc;
+  --amber:  #b5620a;
+  --amber-pale: #fef3e2;
+  --red:    #b81c2a;
+  --red-pale:   #fde8ea;
+  --bg:     #f4f0e8;
+  --card:   #fdfcf9;
+  --border: #ddd8cc;
+  --muted:  #8a8478;
+  --white:  #ffffff;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
-header{background:var(--header);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:3px solid var(--green-light)}
-header h1{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.1}
-header .sub{font-size:10px;color:#8fbc9e;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-.hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.sync-wrap{display:flex;align-items:center;gap:5px;font-size:10px;color:#8fbc9e}
-.sync-dot{width:8px;height:8px;border-radius:50%;background:#8fbc9e}
-.sync-dot.live{background:#4ade80;box-shadow:0 0 4px #4ade80}
-.sync-dot.saving{background:#fbbf24;animation:pulse 1s infinite}
-.sync-dot.err{background:#f87171}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap}
-.btn:hover{background:rgba(255,255,255,.22)}
-.btn.primary{background:var(--green-light);border-color:var(--green-light);color:#fff}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px 12px;background:var(--header)}
-.sum-card{background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;text-align:center}
-.sum-val{font-size:22px;font-weight:700;color:#fff;line-height:1}
-.sum-lbl{font-size:10px;color:#8fbc9e;text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
-.sum-card.s-green .sum-val{color:#4ade80}
-.sum-card.s-amber .sum-val{color:#fbbf24}
-.sum-card.s-red .sum-val{color:#f87171}
-.toolbar{padding:8px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.filter-btn{background:var(--grey-bg);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;font-family:inherit}
-.filter-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
-.search{border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:12px;font-family:inherit;color:var(--text);background:#fff;width:130px}
-.add-btn{margin-left:auto;background:var(--green);color:#fff;border:none;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600}
 
-/* Group cards */
-.groups{padding:8px 12px;display:flex;flex-direction:column;gap:6px}
-.group-card{background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden;transition:box-shadow .15s}
-.group-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.gc-head{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer;user-select:none}
-.gc-time{font-size:13px;font-weight:700;color:var(--green);min-width:42px}
-.gc-players{flex:1;font-size:12px;color:var(--text);line-height:1.5}
-.gc-count{font-size:11px;color:var(--muted);min-width:18px;text-align:right}
-.gc-tl{display:flex;gap:4px;margin-left:4px}
-.tl-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;font-size:0;flex-shrink:0;transition:transform .1s}
-.tl-btn:active{transform:scale(.88)}
-.tl-btn.tl-green{background:var(--green-light)}
-.tl-btn.tl-amber{background:var(--amber)}
-.tl-btn.tl-red{background:var(--red)}
-.tl-btn.tl-grey{background:#d1d5db}
-.tl-btn.selected{border-color:#111;box-shadow:0 0 0 2px rgba(0,0,0,.25)}
-.gc-body{border-top:1px solid var(--border);padding:8px 10px;display:none}
-.gc-body.open{display:block}
-.gc-note{width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:12px;font-family:inherit;color:var(--text);resize:none;min-height:40px}
-.gc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:10px;color:var(--muted)}
-.badge{display:inline-block;font-size:10px;border-radius:3px;padding:1px 4px;font-weight:600;margin-left:3px}
-.badge-M{background:#dbeafe;color:#1e40af}
-.badge-V{background:#fef3c7;color:#92400e}
-.badge-S{background:#dcfce7;color:#166534}
-.reserved-card{background:#f9fafb;border:1px dashed var(--border);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--muted);font-style:italic;display:flex;align-items:center;gap:8px}
-.status-bar{height:4px;width:100%;flex-shrink:0}
-.sb-green{background:var(--green-light)}
-.sb-amber{background:var(--amber)}
-.sb-red{background:var(--red)}
-.sb-grey{background:#e5e7eb}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-/* Committee view */
-body.committee .add-btn,body.committee .gc-note,body.committee .gc-body,body.committee .tl-btn,body.committee .filter-btn,body.committee .search,body.committee .toolbar .add-btn{pointer-events:none;opacity:.7}
-body.committee header{background:#1a1f2e}
+body {
+  font-family: 'DM Mono', monospace;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13px;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
 
-/* Modal */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center}
-.modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:14px;padding:20px;width:90%;max-width:380px;max-height:90vh;overflow-y:auto}
-.modal h2{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--text)}
-.modal label{display:block;font-size:12px;color:var(--muted);margin-bottom:3px;margin-top:10px}
-.modal input,.modal select,.modal textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-size:13px;font-family:inherit;color:var(--text)}
-.modal textarea{resize:vertical;min-height:60px}
-.modal-btns{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
-.mbtn{padding:7px 16px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;border:1px solid var(--border)}
-.mbtn.ok{background:var(--green);color:#fff;border-color:var(--green)}
+/* ═══════════════════════════════
+   HEADER
+═══════════════════════════════ */
+.header {
+  background: var(--ink);
+  color: var(--white);
+  padding: 0 16px;
+  position: sticky; top: 0; z-index: 300;
+  border-bottom: 3px solid var(--mid);
+}
+.header-inner {
+  display: flex; justify-content: space-between; align-items: stretch;
+  min-height: 58px;
+}
+.header-left { display: flex; flex-direction: column; justify-content: center; padding: 10px 0; }
+.header-left h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 900;
+  letter-spacing: -0.5px; line-height: 1;
+  color: var(--white);
+}
+.header-left .sub {
+  font-size: 9px; color: var(--mid);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 3px;
+}
+.header-right {
+  display: flex; flex-direction: column;
+  align-items: flex-end; justify-content: center;
+  gap: 4px; padding: 8px 0;
+}
+.date-pill {
+  background: var(--green); color: var(--white);
+  padding: 3px 9px; border-radius: 20px;
+  font-size: 10px; letter-spacing: 0.3px;
+}
+.sync-row { display: flex; align-items: center; gap: 5px; }
+.sync-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #555; transition: background 0.4s, box-shadow 0.4s;
+  flex-shrink: 0;
+}
+.sync-dot.live   { background: var(--mid); box-shadow: 0 0 6px var(--mid); }
+.sync-dot.saving { background: #e9943a; }
+.sync-dot.err    { background: var(--red); }
+.sync-label { font-size: 9px; color: #7aad8e; }
 
-/* History modal */
-.hist-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.hist-item{padding:10px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px}
-.hist-item:hover{background:var(--green-bg)}
+/* ═══════════════════════════════
+   MODE BANNER
+═══════════════════════════════ */
+.mode-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 14px; gap: 10px;
+  font-size: 10px; letter-spacing: 0.3px;
+  background: #253529; color: #9fcfab;
+  border-bottom: 1px solid #2e4233;
+}
+.mode-banner.readonly { background: #332510; color: #e8c07a; border-color: #4a3318; }
+.banner-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.btn {
+  border: none; border-radius: 5px; cursor: pointer;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  padding: 5px 11px; color: var(--white); transition: opacity 0.15s;
+  white-space: nowrap;
+}
+.btn:active { opacity: 0.75; }
+.btn-share  { background: var(--mid); }
+.btn-export { background: #3a5c42; }
+.btn-day    { background: #2a4535; border: 1px solid #3d6047; }
+
+/* ═══════════════════════════════
+   STATS BAR
+═══════════════════════════════ */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--border); gap: 1px;
+  border-bottom: 2px solid var(--border);
+}
+.stat { background: var(--card); text-align: center; padding: 9px 4px 7px; }
+.stat-n { font-size: 24px; font-weight: 500; line-height: 1; }
+.stat-l { font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.c-total { color: var(--ink); }
+.c-green { color: var(--green); }
+.c-amber { color: var(--amber); }
+.c-red   { color: var(--red); }
+
+/* ═══════════════════════════════
+   FILTER BAR
+═══════════════════════════════ */
+.filter-bar {
+  display: flex; gap: 6px; padding: 9px 12px;
+  background: #e9e3d8; border-bottom: 1px solid var(--border);
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.fbtn {
+  border: 1.5px solid transparent; background: var(--white);
+  padding: 5px 13px; border-radius: 20px; cursor: pointer;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--muted); white-space: nowrap; transition: all 0.15s;
+}
+.fbtn.on        { background: var(--ink);   color: var(--white); border-color: var(--ink); }
+.fbtn.on.fg     { background: var(--green); border-color: var(--green); }
+.fbtn.on.fa     { background: var(--amber); border-color: var(--amber); }
+.fbtn.on.fr     { background: var(--red);   border-color: var(--red); }
+
+/* ═══════════════════════════════
+   TABLE
+═══════════════════════════════ */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; min-width: 500px; }
+thead tr { background: #e4ddd0; }
+th {
+  padding: 7px 10px; text-align: left;
+  font-size: 8.5px; text-transform: uppercase; letter-spacing: 1.3px;
+  color: var(--muted); font-weight: 500; border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+tbody tr.hidden { display: none; }
+td { padding: 8px 10px; vertical-align: middle; }
+
+.t-time { font-weight: 500; font-size: 13px; white-space: nowrap; color: var(--ink); min-width: 48px; }
+.t-players { font-size: 11px; color: #444; line-height: 1.55; max-width: 180px; }
+.t-players .nm { white-space: nowrap; display: inline-block; margin-right: 3px; }
+.t-players .res { font-style: italic; color: var(--muted); }
+.t-stamp { font-size: 10px; color: var(--muted); white-space: nowrap; }
+.t-note input {
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 4px 7px; font-family: 'DM Mono', monospace;
+  font-size: 11px; width: 105px; background: transparent; color: var(--ink);
+}
+.t-note input:focus { outline: none; border-color: var(--green); background: var(--white); }
+.t-note .ro-note { font-size: 11px; color: #555; }
+
+/* Row tints */
+tr.s-green td { background: rgba(45,106,79,0.07); }
+tr.s-amber td { background: rgba(181,98,10,0.07); }
+tr.s-red   td { background: rgba(184,28,42,0.07); }
+
+/* Traffic lights */
+.tl { display: flex; gap: 5px; align-items: center; }
+.dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid transparent; cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.15s; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.dot:active { transform: scale(0.86); }
+.dot-g { background: #c5efd5; border-color: #8fd4aa; }
+.dot-a { background: #fde5bc; border-color: #f0c07a; }
+.dot-r { background: #fbc8cc; border-color: #f09098; }
+.dot-g.on { background: var(--green); border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,79,.25); }
+.dot-a.on { background: var(--amber); border-color: var(--amber); box-shadow: 0 0 0 3px rgba(181,98,10,.25); }
+.dot-r.on { background: var(--red);   border-color: var(--red);   box-shadow: 0 0 0 3px rgba(184,28,42,.25); }
+body.readonly .dot { pointer-events: none; }
+
+/* Section headers */
+tr.sec-hdr td {
+  background: var(--ink); color: var(--mid);
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px;
+}
+
+/* ═══════════════════════════════
+   MODALS (shared shell)
+═══════════════════════════════ */
+.modal-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.6); z-index: 500;
+  align-items: flex-end; justify-content: center;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: 16px 16px 0 0;
+  padding: 24px 20px 32px; width: 100%; max-width: 480px;
+  font-size: 13px; line-height: 1.6;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.modal p { color: #555; margin-bottom: 14px; font-size: 12px; line-height: 1.6; }
+.modal label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+.modal input[type=text], .modal input[type=time] {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 7px;
+  padding: 9px 11px; font-family: 'DM Mono', monospace; font-size: 13px;
+  margin-bottom: 14px; background: var(--bg);
+}
+.modal input:focus { outline: none; border-color: var(--green); background: var(--white); }
+.modal-actions { display: flex; gap: 8px; margin-top: 4px; }
+.modal-btn {
+  flex: 1; padding: 11px 0; border: none; border-radius: 8px;
+  font-family: 'DM Mono', monospace; font-size: 12px; cursor: pointer; font-weight: 500;
+}
+.modal-btn.primary { background: var(--green); color: var(--white); }
+.modal-btn.danger  { background: var(--red);   color: var(--white); }
+.modal-btn.ghost   { background: #eee; color: #555; }
+.modal-btn:active  { opacity: 0.8; }
+
+/* Share URL box */
+.share-url-box {
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 10px 12px; font-size: 11px; color: var(--ink);
+  word-break: break-all; margin-bottom: 16px;
+  cursor: pointer; user-select: all; line-height: 1.5;
+}
+.share-note { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+
+/* Day history picker */
+.day-list { max-height: 260px; overflow-y: auto; margin-bottom: 14px; }
+.day-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+  margin-bottom: 6px; cursor: pointer; transition: background 0.1s;
+  background: var(--bg);
+}
+.day-item:active { background: var(--pale); }
+.day-item .di-date { font-weight: 500; }
+.day-item .di-stats { font-size: 10px; color: var(--muted); }
+.day-item .di-arrow { color: var(--muted); }
+
+/* Add player form rows */
+.form-row { display: flex; gap: 8px; }
+.form-row input { flex: 1; }
+
+/* No results */
+.no-res { text-align: center; color: var(--muted); padding: 32px; font-size: 12px; font-style: italic; display: none; }
 
 /* Toast */
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:8px 18px;border-radius:20px;font-size:12px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
-.toast.show{opacity:1}
-
-/* View mode banner */
-.view-banner{background:var(--amber);color:#fff;text-align:center;font-size:11px;padding:4px;font-weight:600;letter-spacing:.5px}
-
-@media(max-width:380px){
-  .summary{grid-template-columns:repeat(2,1fr)}
-  header h1{font-size:15px}
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink); color: var(--white);
+  padding: 10px 22px; border-radius: 24px; font-size: 12px;
+  transition: transform 0.28s cubic-bezier(.34,1.56,.64,1);
+  z-index: 700; pointer-events: none; white-space: nowrap;
 }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Add group fab */
+.fab {
+  position: fixed; bottom: 24px; right: 18px;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: var(--green); color: var(--white);
+  font-size: 26px; border: none; cursor: pointer;
+  box-shadow: 0 4px 18px rgba(45,106,79,.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200; transition: transform 0.15s;
+}
+.fab:active { transform: scale(0.92); }
+body.readonly .fab { display: none; }
+
 </style>
 </head>
 <body>
 
-<div id="view-banner" class="view-banner" style="display:none">COMMITTEE VIEW — READ ONLY</div>
-
-<header>
-  <div>
-    <div class="h1">
-      <h1>SRGC Marshal</h1>
-      <div class="sub" id="hdr-date">18 April 2026</div>
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>Stoke Rochford GC</h1>
+      <div class="sub">Marshall · Pace of Play Tracker</div>
+    </div>
+    <div class="header-right">
+      <div class="date-pill" id="datePill">Saturday 18 April 2026</div>
+      <div class="sync-row">
+        <div class="sync-dot err" id="syncDot"></div>
+        <span class="sync-label" id="syncLabel">Local only</span>
+      </div>
     </div>
   </div>
-  <div class="hdr-right">
-    <div class="sync-wrap">
-      <div class="sync-dot" id="sync-dot"></div>
-      <span id="sync-lbl">—</span>
-    </div>
-    <button class="btn" onclick="openHistory()">📅 History</button>
-    <button class="btn primary" onclick="exportCSV()">Export CSV</button>
+</div>
+
+<!-- ── MODE BANNER ── -->
+<div class="mode-banner" id="modeBanner">
+  <span id="modeText">🏌️ Marshall View</span>
+  <div class="banner-actions">
+    <button class="btn btn-day" onclick="openDayModal()" id="btnDay">📅 History</button>
+    <button class="btn btn-export" onclick="exportCSV()">⬇ CSV</button>
+    <button class="btn btn-share" onclick="openShareModal()">📤 Share</button>
   </div>
-</header>
-
-<div class="summary">
-  <div class="sum-card"><div class="sum-val" id="s-total">0</div><div class="sum-lbl">Groups</div></div>
-  <div class="sum-card s-green"><div class="sum-val" id="s-green">0</div><div class="sum-lbl">On Time</div></div>
-  <div class="sum-card s-amber"><div class="sum-val" id="s-amber">0</div><div class="sum-lbl">Slow</div></div>
-  <div class="sum-card s-red"><div class="sum-val" id="s-red">0</div><div class="sum-lbl">Action</div></div>
 </div>
 
-<div class="toolbar">
-  <button class="filter-btn active" data-f="all" onclick="setFilter('all',this)">All</button>
-  <button class="filter-btn" data-f="green" onclick="setFilter('green',this)">🟢</button>
-  <button class="filter-btn" data-f="amber" onclick="setFilter('amber',this)">🟡</button>
-  <button class="filter-btn" data-f="red" onclick="setFilter('red',this)">🔴</button>
-  <button class="filter-btn" data-f="visitor" onclick="setFilter('visitor',this)">Visitors</button>
-  <input class="search" type="text" placeholder="Search…" id="search-inp" oninput="render()">
-  <button class="add-btn" onclick="openAddModal()">+ Group</button>
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-n c-total" id="sTotal">37</div><div class="stat-l">Groups</div></div>
+  <div class="stat"><div class="stat-n c-green" id="sGreen">0</div><div class="stat-l">On time</div></div>
+  <div class="stat"><div class="stat-n c-amber" id="sAmber">0</div><div class="stat-l">Slow</div></div>
+  <div class="stat"><div class="stat-n c-red" id="sRed">0</div><div class="stat-l">Behind</div></div>
 </div>
 
-<div class="groups" id="groups-wrap"></div>
+<!-- ── FILTERS ── -->
+<div class="filter-bar">
+  <button class="fbtn on" onclick="setFilter(&#39;all&#39;,this)">All</button>
+  <button class="fbtn fg" onclick="setFilter(&#39;green&#39;,this)">🟢 On time</button>
+  <button class="fbtn fa" onclick="setFilter(&#39;amber&#39;,this)">🟡 Slow</button>
+  <button class="fbtn fr" onclick="setFilter(&#39;red&#39;,this)">🔴 Behind</button>
+  <button class="fbtn" onclick="setFilter(&#39;none&#39;,this)">⬜ Unchecked</button>
+</div>
 
-<!-- Add group modal -->
-<div class="modal-bg" id="add-modal">
+<!-- ── TABLE ── -->
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Time</th><th>Players</th><th>Pace</th><th>Marked</th><th>Notes</th></tr></thead>
+    <tbody id="tbody"><tr class="sec-hdr"><td colspan="5">Morning Wave</td></tr><tr data-time="06:45" data-status="none">
+      <td class="t-time">06:45</td>
+      <td class="t-players"><span class="nm">Michael Heath</span> · <span class="nm">Martin Kerry</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;06:45&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;06:45&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;06:45&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;06:45&#39;,this.value)"></td></tr><tr data-time="06:53" data-status="none">
+      <td class="t-time">06:53</td>
+      <td class="t-players"><span class="nm">Mark Schiavi</span> · <span class="nm">David Doncaster</span> · <span class="nm">Paul Thistlewood</span> · <span class="nm">Ian Bruce</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;06:53&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;06:53&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;06:53&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;06:53&#39;,this.value)"></td></tr><tr data-time="07:01" data-status="none">
+      <td class="t-time">07:01</td>
+      <td class="t-players"><span class="nm">Stan Watson</span> · <span class="nm">Sam Duxbry</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:01&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:01&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:01&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:01&#39;,this.value)"></td></tr><tr data-time="07:09" data-status="none">
+      <td class="t-time">07:09</td>
+      <td class="t-players"><span class="nm">Martin Harvey</span> · <span class="nm">Ben Harvey</span> · <span class="nm">George Beadle</span> · <span class="nm">Liam Gales</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:09&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:09&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:09&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:09&#39;,this.value)"></td></tr><tr data-time="07:17" data-status="none">
+      <td class="t-time">07:17</td>
+      <td class="t-players"><span class="nm">Leo Novakovic</span> · <span class="nm">Tom Edmondson Matthews</span> · <span class="nm">Michail Michailou</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:17&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:17&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:17&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:17&#39;,this.value)"></td></tr><tr data-time="07:25" data-status="none">
+      <td class="t-time">07:25</td>
+      <td class="t-players"><span class="nm">Michael Killen</span> · <span class="nm">Jonathan Green</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:25&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:25&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:25&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:25&#39;,this.value)"></td></tr><tr data-time="07:33" data-status="none">
+      <td class="t-time">07:33</td>
+      <td class="t-players"><span class="nm">David Hardingham</span> · <span class="nm">Peter Atkinson</span> · <span class="nm">Clive Breedon</span> · <span class="nm">Phil Hewes</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:33&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:33&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:33&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:33&#39;,this.value)"></td></tr><tr data-time="07:41" data-status="none">
+      <td class="t-time">07:41</td>
+      <td class="t-players"><span class="nm">Andrew Gordon</span> · <span class="nm">Liam Waddingham</span> · <span class="nm">Mark Kokocinski</span> · <span class="nm">Julian Smith</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:41&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:41&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:41&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:41&#39;,this.value)"></td></tr><tr data-time="07:49" data-status="none">
+      <td class="t-time">07:49</td>
+      <td class="t-players"><span class="nm">Steve Roffe</span> · <span class="nm">Jonathan Brett</span> · <span class="nm">Oliver Brett</span> · <span class="nm">James Roffe</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:49&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:49&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:49&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:49&#39;,this.value)"></td></tr><tr data-time="07:57" data-status="none">
+      <td class="t-time">07:57</td>
+      <td class="t-players"><span class="nm">David Ramshaw</span> · <span class="nm">Nick Begy</span> · <span class="nm">Simon Morley</span> · <span class="nm">Graeme North</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;07:57&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;07:57&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;07:57&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;07:57&#39;,this.value)"></td></tr><tr data-time="08:05" data-status="none">
+      <td class="t-time">08:05</td>
+      <td class="t-players"><span class="nm">Mark Durno</span> · <span class="nm">Mark Owen</span> · <span class="nm">Max Braime</span> · <span class="nm">James Delplanque</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:05&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:05&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:05&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:05&#39;,this.value)"></td></tr><tr data-time="08:13" data-status="none">
+      <td class="t-time">08:13</td>
+      <td class="t-players"><span class="nm">John Elliott</span> · <span class="nm">Angus Owen</span> · <span class="nm">Paul Hutchings</span> · <span class="nm">Jason Jones</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:13&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:13&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:13&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:13&#39;,this.value)"></td></tr><tr data-time="08:21" data-status="none">
+      <td class="t-time">08:21</td>
+      <td class="t-players"><span class="nm">Riley Haw</span> · <span class="nm">Robin Harris</span> · <span class="nm">Stephen Hutchings</span> · <span class="nm">Taylor Simpson</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:21&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:21&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:21&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:21&#39;,this.value)"></td></tr><tr data-time="08:29" data-status="none">
+      <td class="t-time">08:29</td>
+      <td class="t-players"><span class="nm">Richard Dexter</span> · <span class="nm">Robert Griffin</span> · <span class="nm">Scott Budding</span> · <span class="nm">Ian Braime</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:29&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:29&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:29&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:29&#39;,this.value)"></td></tr><tr data-time="08:37" data-status="none">
+      <td class="t-time">08:37</td>
+      <td class="t-players"><span class="nm">David Simpson</span> · <span class="nm">Neil Tee-Boon</span> · <span class="nm">Martin Harris</span> · <span class="nm">Kevin Haw</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:37&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:37&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:37&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:37&#39;,this.value)"></td></tr><tr data-time="08:45" data-status="none">
+      <td class="t-time">08:45</td>
+      <td class="t-players"><span class="nm">Andrew Tildesley</span> · <span class="nm">David McKendrick</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:45&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:45&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:45&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:45&#39;,this.value)"></td></tr><tr data-time="08:53" data-status="none">
+      <td class="t-time">08:53</td>
+      <td class="t-players"><span class="nm">Mike Catlin</span> · <span class="nm">Chris Vose</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;08:53&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;08:53&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;08:53&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;08:53&#39;,this.value)"></td></tr><tr data-time="09:01" data-status="none">
+      <td class="t-time">09:01</td>
+      <td class="t-players"><span class="nm">Antony Dawson</span> · <span class="nm">Eddie Oswin</span> · <span class="nm">Malcolm Williams</span> · <span class="nm">Antony Halls</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:01&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:01&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:01&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:01&#39;,this.value)"></td></tr><tr data-time="09:09" data-status="none">
+      <td class="t-time">09:09</td>
+      <td class="t-players"><span class="res">— empty slot —</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="09:17" data-status="none">
+      <td class="t-time">09:17</td>
+      <td class="t-players"><span class="nm">Roy Thompson</span> · <span class="nm">James Morgan</span> · <span class="nm">Mark Jordan</span> · <span class="nm">Garry Sentance</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:17&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:17&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:17&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:17&#39;,this.value)"></td></tr><tr data-time="09:25" data-status="none">
+      <td class="t-time">09:25</td>
+      <td class="t-players"><span class="nm">Richard Morris</span> · <span class="nm">Jill Morris</span> · <span class="nm">David Hallam</span> · <span class="nm">Tim Parr</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:25&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:25&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:25&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:25&#39;,this.value)"></td></tr><tr data-time="09:33" data-status="none">
+      <td class="t-time">09:33</td>
+      <td class="t-players"><span class="nm">Brian Draper</span> · <span class="nm">Alan Church</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:33&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:33&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:33&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:33&#39;,this.value)"></td></tr><tr data-time="09:41" data-status="none">
+      <td class="t-time">09:41</td>
+      <td class="t-players"><span class="nm">Ian Hickman</span> · <span class="nm">Stephen Burton</span> · <span class="nm">Andrew Spencer</span> · <span class="nm">Tim Kimm</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:41&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:41&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:41&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:41&#39;,this.value)"></td></tr><tr data-time="09:49" data-status="none">
+      <td class="t-time">09:49</td>
+      <td class="t-players"><span class="nm">Bert Tregidgo</span> · <span class="nm">Jim McArthur</span> · <span class="nm">Arthur Wheeler</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:49&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:49&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:49&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:49&#39;,this.value)"></td></tr><tr data-time="09:57" data-status="none">
+      <td class="t-time">09:57</td>
+      <td class="t-players"><span class="nm">Thomas Greenfield</span> · <span class="nm">Nick Watson</span> · <span class="nm">Oliver Hand</span> · <span class="nm">Adam Footitt</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;09:57&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;09:57&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;09:57&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;09:57&#39;,this.value)"></td></tr><tr data-time="10:05" data-status="none">
+      <td class="t-time">10:05</td>
+      <td class="t-players"><span class="nm">Roger Rawson</span> · <span class="nm">Daniel Ellington</span> · <span class="nm">Thomas Rigby</span> · <span class="nm">Rory Thomson</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:05&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:05&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:05&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:05&#39;,this.value)"></td></tr><tr data-time="10:13" data-status="none">
+      <td class="t-time">10:13</td>
+      <td class="t-players"><span class="nm">Ben Rawson</span> · <span class="nm">Max Braime</span> · <span class="nm">Oliver Brewill</span> · <span class="nm">Matthew Brewill</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:13&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:13&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:13&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:13&#39;,this.value)"></td></tr><tr data-time="10:21" data-status="none">
+      <td class="t-time">10:21</td>
+      <td class="t-players"><span class="nm">Andrew Queen</span> · <span class="nm">Mark Goodwin</span> · <span class="nm">Nigel Illingworth</span> · <span class="nm">Peter Sargent</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:21&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:21&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:21&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:21&#39;,this.value)"></td></tr><tr data-time="10:29" data-status="none">
+      <td class="t-time">10:29</td>
+      <td class="t-players"><span class="nm">Simon Mulvey</span> · <span class="nm">Paul Knapp</span> · <span class="nm">Robert Clifton</span> · <span class="nm">Asa Lowther</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:29&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:29&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:29&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:29&#39;,this.value)"></td></tr><tr data-time="10:37" data-status="none">
+      <td class="t-time">10:37</td>
+      <td class="t-players"><span class="nm">David Esswood</span> · <span class="nm">Brian Ayto</span> · <span class="nm">Michael Legge</span> · <span class="nm">Peter Jaggard</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:37&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:37&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:37&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:37&#39;,this.value)"></td></tr><tr data-time="10:45" data-status="none">
+      <td class="t-time">10:45</td>
+      <td class="t-players"><span class="nm">Mark Bailey</span> · <span class="nm">Andrew Burley</span> · <span class="nm">James Burley</span> · <span class="nm">Nicholas Croft</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:45&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:45&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:45&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:45&#39;,this.value)"></td></tr><tr data-time="10:53" data-status="none">
+      <td class="t-time">10:53</td>
+      <td class="t-players"><span class="nm">Anthony Meakin</span> · <span class="nm">Steve Cawser</span> · <span class="nm">Martin Cawser</span> · <span class="nm">Jay Trussler</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;10:53&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;10:53&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;10:53&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;10:53&#39;,this.value)"></td></tr><tr data-time="11:01" data-status="none">
+      <td class="t-time">11:01</td>
+      <td class="t-players"><span class="nm">Jake Wilson</span> · <span class="nm">Maxim Green</span> · <span class="nm">George Mann</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;11:01&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;11:01&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;11:01&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;11:01&#39;,this.value)"></td></tr><tr class="sec-hdr"><td colspan="5">Turnor Cup</td></tr><tr data-time="11:09" data-status="none">
+      <td class="t-time">11:09</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:17" data-status="none">
+      <td class="t-time">11:17</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:25" data-status="none">
+      <td class="t-time">11:25</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:33" data-status="none">
+      <td class="t-time">11:33</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:41" data-status="none">
+      <td class="t-time">11:41</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:49" data-status="none">
+      <td class="t-time">11:49</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr data-time="11:57" data-status="none">
+      <td class="t-time">11:57</td>
+      <td class="t-players"><span class="res">⬛ Reserved for Turnor Cup (M)</span></td>
+      <td></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"></td></tr><tr class="sec-hdr"><td colspan="5">Afternoon</td></tr><tr data-time="12:05" data-status="none">
+      <td class="t-time">12:05</td>
+      <td class="t-players"><span class="nm">Joe Jacobs</span> · <span class="nm">Guest Player</span> · <span class="nm">Guest Player</span> · <span class="nm">Guest Player</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;12:05&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;12:05&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;12:05&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;12:05&#39;,this.value)"></td></tr><tr data-time="12:13" data-status="none">
+      <td class="t-time">12:13</td>
+      <td class="t-players"><span class="nm">Jim Broell</span> · <span class="nm">Guest Player</span> · <span class="nm">Guest Player</span> · <span class="nm">Guest Player</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;12:13&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;12:13&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;12:13&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;12:13&#39;,this.value)"></td></tr><tr data-time="12:21" data-status="none">
+      <td class="t-time">12:21</td>
+      <td class="t-players"><span class="nm">Simon Hodgson</span> · <span class="nm">Mark Tinkler</span> · <span class="nm">Alistair Brook</span> · <span class="nm">Mark Worthington</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;12:21&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;12:21&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;12:21&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;12:21&#39;,this.value)"></td></tr><tr data-time="12:29" data-status="none">
+      <td class="t-time">12:29</td>
+      <td class="t-players"><span class="nm">Garreth Smith</span> · <span class="nm">Jake Smith</span> · <span class="nm">Luke Smith</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;12:29&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;12:29&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;12:29&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;12:29&#39;,this.value)"></td></tr><tr data-time="12:37" data-status="none">
+      <td class="t-time">12:37</td>
+      <td class="t-players"><span class="nm">Harry Nicholls</span> · <span class="nm">James Turnbull</span> · <span class="nm">Andrew Watson</span></td>
+      <td><div class="tl">
+        <div class="dot dot-g " onclick="tap(&#39;12:37&#39;,&#39;green&#39;)" title="On time"></div>
+        <div class="dot dot-a " onclick="tap(&#39;12:37&#39;,&#39;amber&#39;)" title="Slow"></div>
+        <div class="dot dot-r " onclick="tap(&#39;12:37&#39;,&#39;red&#39;)" title="Behind"></div>
+      </div></td>
+      <td class="t-stamp"></td>
+      <td class="t-note"><input type="text" value="" placeholder="notes…" oninput="noteInput(&#39;12:37&#39;,this.value)"></td></tr></tbody>
+  </table>
+  <div class="no-res" id="noRes" style="display: none;">No groups match this filter</div>
+</div>
+
+<!-- ── FAB: Add group ── -->
+<button class="fab" onclick="openAddModal()" title="Add group">+</button>
+
+<!-- ── MODAL: Share ── -->
+<div class="modal-bg" id="shareModal">
   <div class="modal">
-    <h2>Add Group</h2>
+    <h2>📤 Share Live View</h2>
+    <p>Send this link to the pro shop, secretary or captain. They'll see live updates in read-only mode — refreshes every 8 seconds.</p>
+    <div class="share-url-box" id="shareUrlBox" onclick="copyShareUrl()">—</div>
+    <p class="share-note">Tap the link to copy. Anyone with it can view but not edit.</p>
+    <div class="modal-actions">
+      <button class="modal-btn primary" onclick="copyShareUrl()">Copy link</button>
+      <button class="modal-btn ghost" onclick="closeModal(&#39;shareModal&#39;)">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: Add / Edit group ── -->
+<div class="modal-bg" id="addModal">
+  <div class="modal">
+    <h2 id="addModalTitle">➕ Add Group</h2>
     <label>Tee time</label>
-    <input type="time" id="m-time">
-    <label>Players (one per line, prefix V: for visitor)</label>
-    <textarea id="m-players" placeholder="John Smith&#10;V: Jane Visitor"></textarea>
-    <div class="modal-btns">
-      <button class="mbtn" onclick="closeAddModal()">Cancel</button>
-      <button class="mbtn ok" onclick="submitAdd()">Add</button>
+    <input type="time" id="addTime" step="60">
+    <label>Players (one per line or comma-separated)</label>
+    <textarea id="addPlayers" rows="4" style="width:100%;border:1.5px solid var(--border);border-radius:7px;padding:9px 11px;font-family:&#39;DM Mono&#39;,monospace;font-size:12px;background:var(--bg);resize:vertical;margin-bottom:14px"></textarea>
+    <label>Section label (optional)</label>
+    <input type="text" id="addSection" placeholder="e.g. Late additions">
+    <div class="modal-actions">
+      <button class="modal-btn primary" onclick="saveAddGroup()">Save group</button>
+      <button class="modal-btn ghost" onclick="closeModal(&#39;addModal&#39;)">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- History modal -->
-<div class="modal-bg" id="hist-modal">
+<!-- ── MODAL: Day history ── -->
+<div class="modal-bg" id="dayModal">
   <div class="modal">
-    <h2>Day History</h2>
-    <div class="hist-list" id="hist-list"></div>
-    <div class="modal-btns">
-      <button class="mbtn" onclick="closeHistory()">Close</button>
+    <h2>📅 Day History</h2>
+    <p>All days tracked are stored below. Tap a day to view its data (read-only).</p>
+    <div class="day-list" id="dayList"></div>
+    <div class="modal-actions">
+      <button class="modal-btn ghost" onclick="closeModal(&#39;dayModal&#39;)">Close</button>
     </div>
   </div>
 </div>
@@ -175,396 +770,462 @@ body.committee header{background:#1a1f2e}
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════════════
-//  CONFIG
-// ══════════════════════════════════════════════
-const TEE_DATE = "2026-04-18";
-const isCommittee = new URLSearchParams(location.search).has("view");
+// ═══════════════════════════════════════════════════════
+//  MODE
+// ═══════════════════════════════════════════════════════
+const IS_RO = new URLSearchParams(location.search).get("view") === "1";
+const VIEWING_DATE = new URLSearchParams(location.search).get("date") || null;
 
-if (isCommittee) {
-  document.body.classList.add("committee");
-  document.getElementById("view-banner").style.display = "block";
+if (IS_RO) {
+  document.body.classList.add("readonly");
+  document.getElementById("modeBanner").classList.add("readonly");
+  document.getElementById("modeText").textContent = "👁 Committee View — live read-only";
+  document.getElementById("btnDay").style.display = "none";
 }
 
-// ══════════════════════════════════════════════
-//  TEE DATA — 18 Apr 2026
-// ══════════════════════════════════════════════
-const BASE_TEE = [
-  {t:"06:45",players:[{n:"Michael Heath",ty:"M"},{n:"Martin Kerry",ty:"M"}]},
-  {t:"06:53",players:[{n:"Mark Schiavi",ty:"M"},{n:"David Doncaster",ty:"M"},{n:"Paul Thistlewood",ty:"M"},{n:"Ian Bruce",ty:"M"}]},
-  {t:"07:01",players:[{n:"Stan Watson",ty:"M"},{n:"Sam Duxbry",ty:"V"}]},
-  {t:"07:09",players:[{n:"Martin Harvey",ty:"M"},{n:"Ben Harvey",ty:"M"},{n:"George Beadle",ty:"M"},{n:"Liam Gales",ty:"M"}]},
-  {t:"07:17",players:[{n:"Leo Novakovic",ty:"M"},{n:"Tom Edmondson Matthews",ty:"V"},{n:"Michail Michailou",ty:"V"}]},
-  {t:"07:25",players:[{n:"Michael Killen",ty:"M"},{n:"Jonathan Green",ty:"M"}]},
-  {t:"07:33",players:[{n:"David Hardingham",ty:"M"},{n:"Peter Atkinson",ty:"M"},{n:"Clive Breedon",ty:"M"},{n:"Phil Hewes",ty:"M"}]},
-  {t:"07:41",players:[{n:"Andrew Gordon",ty:"M"},{n:"Liam Waddingham",ty:"M"},{n:"Mark Kokocinski",ty:"M"},{n:"Julian Smith",ty:"M"}]},
-  {t:"07:49",players:[{n:"Steve Roffe",ty:"M"},{n:"Jonathan Brett",ty:"M"},{n:"Oliver Brett",ty:"M"},{n:"James Roffe",ty:"M"}]},
-  {t:"07:57",players:[{n:"David Ramshaw",ty:"M"},{n:"Nick Begy",ty:"M"},{n:"Simon Morley",ty:"M"},{n:"Graeme North",ty:"M"}]},
-  {t:"08:05",players:[{n:"Mark Durno",ty:"M"},{n:"Mark Owen",ty:"M"},{n:"Max Braime",ty:"M"},{n:"James Delplanque",ty:"M"}]},
-  {t:"08:13",players:[{n:"John Elliott",ty:"M"},{n:"Angus Owen",ty:"M"},{n:"Paul Hutchings",ty:"M"},{n:"Jason Jones",ty:"M"}]},
-  {t:"08:21",players:[{n:"Riley Haw",ty:"M"},{n:"Robin Harris",ty:"M"},{n:"Stephen Hutchings",ty:"M"},{n:"Taylor Simpson",ty:"M"}]},
-  {t:"08:29",players:[{n:"Richard Dexter",ty:"M"},{n:"Robert Griffin",ty:"M"},{n:"Scott Budding",ty:"M"},{n:"Ian Braime",ty:"M"}]},
-  {t:"08:37",players:[{n:"David Simpson",ty:"M"},{n:"Neil Tee-Boon",ty:"M"},{n:"Martin Harris",ty:"M"},{n:"Kevin Haw",ty:"M"}]},
-  {t:"08:45",players:[{n:"Andrew Tildesley",ty:"M"},{n:"David McKendrick",ty:"M"}]},
-  {t:"08:53",players:[{n:"Mike Catlin",ty:"M"},{n:"Chris Vose",ty:"M"}]},
-  {t:"09:01",players:[{n:"Antony Dawson",ty:"M"},{n:"Eddie Oswin",ty:"M"},{n:"Malcolm Williams",ty:"M"},{n:"Antony Halls",ty:"M"}]},
-  {t:"09:09",players:[]},
-  {t:"09:17",players:[{n:"Roy Thompson",ty:"M"},{n:"James Morgan",ty:"M"},{n:"Mark Jordan",ty:"M"},{n:"Garry Sentance",ty:"M"}]},
-  {t:"09:25",players:[{n:"Richard Morris",ty:"M"},{n:"Jill Morris",ty:"M"},{n:"David Hallam",ty:"M"},{n:"Tim Parr",ty:"M"}]},
-  {t:"09:33",players:[{n:"Brian Draper",ty:"M"},{n:"Alan Church",ty:"M"}]},
-  {t:"09:41",players:[{n:"Ian Hickman",ty:"M"},{n:"Stephen Burton",ty:"M"},{n:"Andrew Spencer",ty:"M"},{n:"Tim Kimm",ty:"M"}]},
-  {t:"09:49",players:[{n:"Bert Tregidgo",ty:"M"},{n:"Jim McArthur",ty:"M"},{n:"Arthur Wheeler",ty:"M"}]},
-  {t:"09:57",players:[{n:"Thomas Greenfield",ty:"M"},{n:"Nick Watson",ty:"M"},{n:"Oliver Hand",ty:"M"},{n:"Adam Footitt",ty:"M"}]},
-  {t:"10:05",players:[{n:"Roger Rawson",ty:"M"},{n:"Daniel Ellington",ty:"M"},{n:"Thomas Rigby",ty:"M"},{n:"Rory Thomson",ty:"M"}]},
-  {t:"10:13",players:[{n:"Ben Rawson",ty:"M"},{n:"Max Braime",ty:"M"},{n:"Oliver Brewill",ty:"M"},{n:"Matthew Brewill",ty:"M"}]},
-  {t:"10:21",players:[{n:"Andrew Queen",ty:"M"},{n:"Mark Goodwin",ty:"M"},{n:"Nigel Illingworth",ty:"M"},{n:"Peter Sargent",ty:"M"}]},
-  {t:"10:29",players:[{n:"Simon Mulvey",ty:"M"},{n:"Paul Knapp",ty:"M"},{n:"Robert Clifton",ty:"M"},{n:"Asa Lowther",ty:"M"}]},
-  {t:"10:37",players:[{n:"David Esswood",ty:"M"},{n:"Brian Ayto",ty:"M"},{n:"Michael Legge",ty:"M"},{n:"Peter Jaggard",ty:"M"}]},
-  {t:"10:45",players:[{n:"Mark Bailey",ty:"M"},{n:"Andrew Burley",ty:"M"},{n:"James Burley",ty:"M"},{n:"Nicholas Croft",ty:"S"}]},
-  {t:"10:53",players:[{n:"Anthony Meakin",ty:"M"},{n:"Steve Cawser",ty:"M"},{n:"Martin Cawser",ty:"M"},{n:"Jay Trussler",ty:"M"}]},
-  {t:"11:01",players:[{n:"Jake Wilson",ty:"M"},{n:"Maxim Green",ty:"M"},{n:"George Mann",ty:"V"}]},
-  {t:"11:09",reserved:"Turnor Cup"},
-  {t:"11:17",reserved:"Turnor Cup"},
-  {t:"11:25",reserved:"Turnor Cup"},
-  {t:"11:33",reserved:"Turnor Cup"},
-  {t:"11:41",reserved:"Turnor Cup"},
-  {t:"11:49",reserved:"Turnor Cup"},
-  {t:"11:57",reserved:"Turnor Cup"},
-  {t:"12:05",players:[{n:"Joe Jacobs",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"}]},
-  {t:"12:13",players:[{n:"Jim Broell",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"}]},
-  {t:"12:21",players:[{n:"Simon Hodgson",ty:"M"},{n:"Mark Tinkler",ty:"M"},{n:"Alistair Brook",ty:"M"},{n:"Mark Worthington",ty:"M"}]},
-  {t:"12:29",players:[{n:"Garreth Smith",ty:"M"},{n:"Jake Smith",ty:"M"},{n:"Luke Smith",ty:"M"}]},
-  {t:"12:37",players:[{n:"Harry Nicholls",ty:"M"},{n:"James Turnbull",ty:"M"},{n:"Andrew Watson",ty:"M"}]},
-];
+// ═══════════════════════════════════════════════════════
+//  TEE DATA — from teesheet-data.js
+// ═══════════════════════════════════════════════════════
+const TEE_DATE  = window.TEESHEET_DATE  || new Date().toISOString().slice(0,10);
+const TEE_LABEL = window.TEESHEET_LABEL || TEE_DATE;
+let   TEE       = window.TEESHEET       || [];
 
-// ══════════════════════════════════════════════
-//  STATE
-// ══════════════════════════════════════════════
-let state = {};           // keyed by group id: {tl, note, ts}
-let extraGroups = [];     // added via + button
-let activeDate = TEE_DATE;
-let filterMode = "all";
-let tee = [];             // merged BASE_TEE + extraGroups
+// Active date being viewed/edited
+let activeDate = VIEWING_DATE || TEE_DATE;
 
-function stateKey(d){ return `srgc_state_${d}`; }
-function teeKey(d)  { return `srgc_extras_${d}`; }
-function daysKey()  { return `srgc_days`; }
+document.getElementById("datePill").textContent = TEE_LABEL;
 
-function groupId(g){ return g.id || g.t; }
+// ═══════════════════════════════════════════════════════
+//  STORAGE KEYS
+//  state_YYYY-MM-DD  = pace data per day (shared=true)
+//  tee_YYYY-MM-DD    = tee additions per day (shared=true)
+// ═══════════════════════════════════════════════════════
+function stateKey(date) { return `srgc_state_${date}`; }
+function teeKey(date)   { return `srgc_tee_${date}`; }
+function daysKey()      { return `srgc_days_index`; }
 
-// ══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  STATE  { "07:25": { status, note, stamp } }
+// ═══════════════════════════════════════════════════════
+let state = {};
+let currentFilter = "all";
+
+// ═══════════════════════════════════════════════════════
 //  SYNC INDICATOR
-// ══════════════════════════════════════════════
-function setSyncState(s){
-  const dot = document.getElementById("sync-dot");
-  const lbl = document.getElementById("sync-lbl");
+// ═══════════════════════════════════════════════════════
+function setSyncState(s) {
+  const dot = document.getElementById("syncDot");
+  const lbl = document.getElementById("syncLabel");
   dot.className = "sync-dot";
-  if(s==="live")  { dot.classList.add("live");   lbl.textContent = isCommittee ? "Live · auto-refresh" : "Synced"; }
-  if(s==="saving"){ dot.classList.add("saving"); lbl.textContent = "Saving…"; }
-  if(s==="err")   { dot.classList.add("err");    lbl.textContent = "Local only"; }
+  if (s === "live")   { dot.classList.add("live");   lbl.textContent = IS_RO ? "Live · auto-refresh" : "Synced"; }
+  if (s === "saving") { dot.classList.add("saving"); lbl.textContent = "Saving…"; }
+  if (s === "err")    { dot.classList.add("err");    lbl.textContent = "Local only"; }
 }
 
-// ══════════════════════════════════════════════
-//  STORAGE
-// ══════════════════════════════════════════════
-async function saveState(){
+// ═══════════════════════════════════════════════════════
+//  PERSIST — save & load via window.storage (shared)
+//  Falls back to localStorage silently
+// ═══════════════════════════════════════════════════════
+async function saveState() {
   setSyncState("saving");
   try {
     await window.storage.set(stateKey(activeDate), JSON.stringify(state), true);
     await registerDay(activeDate);
     setSyncState("live");
-  } catch(e){
+  } catch(e) {
     try { localStorage.setItem(stateKey(activeDate), JSON.stringify(state)); } catch(_){}
     setSyncState("err");
   }
 }
 
-async function loadState(date){
+async function loadState(date) {
   try {
     const r = await window.storage.get(stateKey(date), true);
     state = (r && r.value) ? JSON.parse(r.value) : {};
     setSyncState("live");
-  } catch(e){
-    try { const ls = localStorage.getItem(stateKey(date)); state = ls ? JSON.parse(ls) : {}; } catch(_){ state = {}; }
+  } catch(e) {
+    try {
+      const ls = localStorage.getItem(stateKey(date));
+      state = ls ? JSON.parse(ls) : {};
+    } catch(_) { state = {}; }
     setSyncState("err");
   }
 }
 
-async function saveExtras(date, extras){
-  try { await window.storage.set(teeKey(date), JSON.stringify(extras), true); }
-  catch(e){ try { localStorage.setItem(teeKey(date), JSON.stringify(extras)); } catch(_){} }
-}
-
-async function loadExtras(date){
+async function saveExtraGroups(date, extras) {
   try {
-    const r = await window.storage.get(teeKey(date), true);
-    return (r && r.value) ? JSON.parse(r.value) : [];
-  } catch(e){
-    try { const ls = localStorage.getItem(teeKey(date)); return ls ? JSON.parse(ls) : []; }
-    catch(_){ return []; }
+    await window.storage.set(teeKey(date), JSON.stringify(extras), true);
+  } catch(e) {
+    try { localStorage.setItem(teeKey(date), JSON.stringify(extras)); } catch(_){}
   }
 }
 
-async function registerDay(date){
+async function loadExtraGroups(date) {
+  try {
+    const r = await window.storage.get(teeKey(date), true);
+    return (r && r.value) ? JSON.parse(r.value) : [];
+  } catch(e) {
+    try {
+      const ls = localStorage.getItem(teeKey(date));
+      return ls ? JSON.parse(ls) : [];
+    } catch(_) { return []; }
+  }
+}
+
+// ─── Day index: keeps track of all dates that have data ───
+async function registerDay(date) {
   try {
     const r = await window.storage.get(daysKey(), true);
     let days = (r && r.value) ? JSON.parse(r.value) : [];
-    if(!days.includes(date)){ days.push(date); days.sort().reverse(); await window.storage.set(daysKey(), JSON.stringify(days), true); }
-  } catch(e){
+    if (!days.includes(date)) {
+      days.push(date);
+      days.sort().reverse();
+      await window.storage.set(daysKey(), JSON.stringify(days), true);
+    }
+  } catch(e) {
     try {
       let days = JSON.parse(localStorage.getItem(daysKey())||"[]");
-      if(!days.includes(date)){ days.push(date); days.sort().reverse(); }
+      if (!days.includes(date)) { days.push(date); days.sort().reverse(); }
       localStorage.setItem(daysKey(), JSON.stringify(days));
     } catch(_){}
   }
 }
 
-async function getDays(){
-  try { const r = await window.storage.get(daysKey(), true); return (r && r.value) ? JSON.parse(r.value) : [TEE_DATE]; }
-  catch(e){ try { return JSON.parse(localStorage.getItem(daysKey())||`["${TEE_DATE}"]`); } catch(_){ return [TEE_DATE]; } }
+async function getDays() {
+  try {
+    const r = await window.storage.get(daysKey(), true);
+    return (r && r.value) ? JSON.parse(r.value) : [TEE_DATE];
+  } catch(e) {
+    try { return JSON.parse(localStorage.getItem(daysKey())||`["${TEE_DATE}"]`); } catch(_) { return [TEE_DATE]; }
+  }
 }
 
-// ══════════════════════════════════════════════
-//  LOAD / INIT
-// ══════════════════════════════════════════════
-async function loadFullTee(date){
-  extraGroups = await loadExtras(date);
-  tee = date === TEE_DATE
-    ? [...BASE_TEE, ...extraGroups].sort((a,b)=>a.t.localeCompare(b.t))
-    : [...extraGroups].sort((a,b)=>a.t.localeCompare(b.t));
+// ─── Merge base tee + any extras saved for this date ───
+let extraGroups = []; // additions made in-app for activeDate
+
+async function loadFullTee(date) {
+  extraGroups = await loadExtraGroups(date);
+  // Base tee only applies to today's date; other dates use only extras
+  const base = (date === TEE_DATE) ? [...TEE] : [];
+  const all  = [...base, ...extraGroups];
+  all.sort((a,b)=> a.time.localeCompare(b.time));
+  return all;
 }
 
-async function init(){
-  await loadState(activeDate);
-  await loadFullTee(activeDate);
-  render();
-  if(isCommittee) setInterval(async()=>{ await loadState(activeDate); render(); }, 15000);
-}
+// ═══════════════════════════════════════════════════════
+//  BUILD TABLE
+// ═══════════════════════════════════════════════════════
+let activeTee = [];
 
-// ══════════════════════════════════════════════
-//  RENDER
-// ══════════════════════════════════════════════
-function render(){
-  const wrap = document.getElementById("groups-wrap");
-  const search = (document.getElementById("search-inp").value||"").toLowerCase();
+function buildTable() {
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+  let lastSec = null;
 
-  let totalGroups=0, cGreen=0, cAmber=0, cRed=0;
+  activeTee.forEach(row => {
+    const isPlayable = !row.reserved && row.players.length > 0;
 
-  tee.forEach(g=>{
-    if(!g.reserved && g.players && g.players.length>0){
-      totalGroups++;
-      const id = groupId(g);
-      const s = state[id]||{};
-      if(s.tl==="green") cGreen++;
-      else if(s.tl==="amber") cAmber++;
-      else if(s.tl==="red") cRed++;
-    }
-  });
-
-  document.getElementById("s-total").textContent = totalGroups;
-  document.getElementById("s-green").textContent = cGreen;
-  document.getElementById("s-amber").textContent = cAmber;
-  document.getElementById("s-red").textContent = cRed;
-
-  wrap.innerHTML = "";
-
-  tee.forEach((g, idx)=>{
-    if(g.reserved){
-      if(filterMode !== "all") return;
-      const d = document.createElement("div");
-      d.className = "reserved-card";
-      d.innerHTML = `<span style="color:#9ca3af">⬜</span> <span>${g.t} — Reserved: ${g.reserved}</span>`;
-      wrap.appendChild(d);
-      return;
+    if (row.section && row.section !== lastSec) {
+      lastSec = row.section;
+      const tr = document.createElement("tr");
+      tr.className = "sec-hdr";
+      tr.innerHTML = `<td colspan="5">${row.section}</td>`;
+      tbody.appendChild(tr);
     }
 
-    if(!g.players || g.players.length === 0){
-      if(filterMode !== "all") return;
+    const s = state[row.time] || { status:"none", note:"", stamp:"" };
+    const tr = document.createElement("tr");
+    tr.setAttribute("data-time", row.time);
+    tr.setAttribute("data-status", s.status || "none");
+    if (s.status && s.status !== "none") tr.classList.add(`s-${s.status}`);
+
+    // Players cell
+    let pHtml;
+    if (row.reserved) {
+      pHtml = `<span class="res">⬛ ${row.reserved}</span>`;
+    } else if (!isPlayable) {
+      pHtml = `<span class="res">— empty slot —</span>`;
+    } else {
+      pHtml = row.players.map(p=>`<span class="nm">${p}</span>`).join(" · ");
     }
 
-    const id = groupId(g);
-    const s = state[id] || {};
-    const tl = s.tl || "grey";
-
-    // filter
-    if(filterMode === "green" && tl !== "green") return;
-    if(filterMode === "amber" && tl !== "amber") return;
-    if(filterMode === "red"   && tl !== "red")   return;
-    if(filterMode === "visitor" && !g.players.some(p=>p.ty==="V")) return;
-
-    if(search){
-      const match = g.players.some(p=>p.n.toLowerCase().includes(search)) || g.t.includes(search);
-      if(!match) return;
-    }
-
-    const playerHtml = g.players.map(p=>
-      `<span class="badge badge-${p.ty}">${p.ty}</span> ${p.n}`
-    ).join("  ");
-
-    const sbClass = tl==="green"?"sb-green":tl==="amber"?"sb-amber":tl==="red"?"sb-red":"sb-grey";
-    const tsHtml = s.ts ? `<span>Updated ${s.ts}</span>` : `<span></span>`;
-    const noteVal = (s.note||"").replace(/"/g,"&quot;");
-    const isOpen = s._open ? "open" : "";
-
-    const card = document.createElement("div");
-    card.className = "group-card";
-    card.innerHTML = `
-      <div class="status-bar ${sbClass}"></div>
-      <div class="gc-head" onclick="toggleBody('${id}')">
-        <span class="gc-time">${g.t}</span>
-        <span class="gc-players">${playerHtml}</span>
-        <span class="gc-count">${g.players.length}</span>
-        <div class="gc-tl">
-          <button class="tl-btn tl-green ${tl==='green'?'selected':''}" onclick="setTL(event,'${id}','green')" title="On time"></button>
-          <button class="tl-btn tl-amber ${tl==='amber'?'selected':''}" onclick="setTL(event,'${id}','amber')" title="Slow"></button>
-          <button class="tl-btn tl-red ${tl==='red'?'selected':''}" onclick="setTL(event,'${id}','red')" title="Action needed"></button>
-        </div>
-      </div>
-      <div class="gc-body ${isOpen}" id="body-${id}">
-        <textarea class="gc-note" placeholder="Marshal note…" oninput="setNote('${id}',this.value)">${s.note||""}</textarea>
-        <div class="gc-meta">${tsHtml}<span>${g.players.length} player${g.players.length!==1?'s':''}</span></div>
+    // Traffic lights
+    let tlHtml = "";
+    if (isPlayable) {
+      tlHtml = `<div class="tl">
+        <div class="dot dot-g ${s.status==='green'?'on':''}" onclick="tap('${row.time}','green')" title="On time"></div>
+        <div class="dot dot-a ${s.status==='amber'?'on':''}" onclick="tap('${row.time}','amber')" title="Slow"></div>
+        <div class="dot dot-r ${s.status==='red'  ?'on':''}" onclick="tap('${row.time}','red')"   title="Behind"></div>
       </div>`;
-    wrap.appendChild(card);
+    }
+
+    // Note
+    const nv = (s.note||"").replace(/"/g,"&quot;");
+    let noteHtml = "";
+    if (isPlayable) {
+      noteHtml = IS_RO || VIEWING_DATE
+        ? `<span class="ro-note">${s.note||""}</span>`
+        : `<input type="text" value="${nv}" placeholder="notes…" oninput="noteInput('${row.time}',this.value)">`;
+    }
+
+    tr.innerHTML = `
+      <td class="t-time">${row.time}</td>
+      <td class="t-players">${pHtml}</td>
+      <td>${tlHtml}</td>
+      <td class="t-stamp">${s.stamp||""}</td>
+      <td class="t-note">${noteHtml}</td>`;
+
+    applyFilter(tr, s.status||"none");
+    tbody.appendChild(tr);
   });
+
+  updateStats();
+  checkNoResults();
 }
 
-function toggleBody(id){
-  const s = state[id] || {};
-  s._open = !s._open;
-  state[id] = s;
-  render();
-}
-
-function setTL(e, id, color){
-  e.stopPropagation();
-  if(isCommittee) return;
-  const s = state[id] || {};
-  s.tl = s.tl === color ? "grey" : color;
-  s.ts = new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
-  state[id] = s;
-  saveState();
-  render();
-}
-
-function setNote(id, val){
-  if(isCommittee) return;
-  const s = state[id] || {};
-  s.note = val;
-  state[id] = s;
+// ═══════════════════════════════════════════════════════
+//  ACTIONS
+// ═══════════════════════════════════════════════════════
+function tap(time, color) {
+  if (IS_RO || VIEWING_DATE) return;
+  const cur = state[time] || {};
+  if (cur.status === color) {
+    state[time] = { ...cur, status:"none", stamp:"" };
+  } else {
+    const n = new Date();
+    const stamp = n.getHours().toString().padStart(2,"0") + ":" + n.getMinutes().toString().padStart(2,"0");
+    state[time] = { ...cur, status:color, stamp };
+  }
+  buildTable();
   saveState();
 }
 
-// ══════════════════════════════════════════════
-//  FILTER
-// ══════════════════════════════════════════════
-function setFilter(f, btn){
-  filterMode = f;
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  render();
+let noteTimer = null;
+function noteInput(time, val) {
+  if (IS_RO || VIEWING_DATE) return;
+  state[time] = { ...(state[time]||{}), note:val };
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(saveState, 800);
 }
 
-// ══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  FILTERS & STATS
+// ═══════════════════════════════════════════════════════
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll(".fbtn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  buildTable();
+}
+
+function applyFilter(tr, status) {
+  const show = currentFilter==="all"
+    || (currentFilter==="none" && (!status||status==="none"))
+    || status===currentFilter;
+  tr.classList.toggle("hidden", !show);
+}
+
+function checkNoResults() {
+  const vis = document.querySelectorAll("#tbody tr:not(.sec-hdr):not(.hidden)").length;
+  document.getElementById("noRes").style.display = vis===0 ? "block" : "none";
+}
+
+function updateStats() {
+  const playable = activeTee.filter(r=>!r.reserved&&r.players.length>0);
+  let g=0,a=0,r=0;
+  playable.forEach(row=>{
+    const s=state[row.time];
+    if(s?.status==="green") g++;
+    else if(s?.status==="amber") a++;
+    else if(s?.status==="red") r++;
+  });
+  document.getElementById("sTotal").textContent = playable.length;
+  document.getElementById("sGreen").textContent = g;
+  document.getElementById("sAmber").textContent = a;
+  document.getElementById("sRed").textContent   = r;
+}
+
+// ═══════════════════════════════════════════════════════
 //  ADD GROUP MODAL
-// ══════════════════════════════════════════════
-function openAddModal(){
-  document.getElementById("add-modal").classList.add("open");
-  const now = new Date();
-  document.getElementById("m-time").value = now.toTimeString().slice(0,5);
-  document.getElementById("m-players").value = "";
-}
-function closeAddModal(){ document.getElementById("add-modal").classList.remove("open"); }
-
-async function submitAdd(){
-  const timeVal = document.getElementById("m-time").value;
-  const playersRaw = document.getElementById("m-players").value.trim();
-  if(!timeVal){ showToast("Enter a tee time"); return; }
-  const players = playersRaw ? playersRaw.split("\n").filter(Boolean).map(l=>{
-    const isV = l.trim().toLowerCase().startsWith("v:");
-    const name = l.replace(/^v:\s*/i,"").trim();
-    return {n:name, ty: isV ? "V" : "M"};
-  }) : [];
-  const id = `extra_${timeVal}_${Date.now()}`;
-  const newGroup = {t:timeVal, players, id};
-  extraGroups.push(newGroup);
-  tee = activeDate === TEE_DATE
-    ? [...BASE_TEE, ...extraGroups].sort((a,b)=>a.t.localeCompare(b.t))
-    : [...extraGroups].sort((a,b)=>a.t.localeCompare(b.t));
-  await saveExtras(activeDate, extraGroups);
-  closeAddModal();
-  render();
-  showToast(`Group added at ${timeVal}`);
+// ═══════════════════════════════════════════════════════
+function openAddModal() {
+  document.getElementById("addModalTitle").textContent = "➕ Add Group";
+  document.getElementById("addTime").value = "";
+  document.getElementById("addPlayers").value = "";
+  document.getElementById("addSection").value = "";
+  openModal("addModal");
 }
 
-// ══════════════════════════════════════════════
-//  HISTORY MODAL
-// ══════════════════════════════════════════════
-async function openHistory(){
+async function saveAddGroup() {
+  const timeVal = document.getElementById("addTime").value;
+  const playersRaw = document.getElementById("addPlayers").value;
+  const section = document.getElementById("addSection").value.trim();
+
+  if (!timeVal) { showToast("Please enter a tee time"); return; }
+
+  const players = playersRaw
+    .split(/[\n,]+/)
+    .map(p=>p.trim())
+    .filter(Boolean);
+
+  const newGroup = { time: timeVal, players, ...(section ? {section} : {}) };
+
+  // Check if updating existing extra or adding new
+  const existingIdx = extraGroups.findIndex(g=>g.time===timeVal);
+  if (existingIdx >= 0) {
+    extraGroups[existingIdx] = newGroup;
+  } else {
+    extraGroups.push(newGroup);
+  }
+
+  await saveExtraGroups(activeDate, extraGroups);
+  activeTee = await loadFullTee(activeDate);
+  buildTable();
+  closeModal("addModal");
+  showToast(`Group at ${timeVal} saved ✓`);
+}
+
+// ═══════════════════════════════════════════════════════
+//  DAY HISTORY MODAL
+// ═══════════════════════════════════════════════════════
+async function openDayModal() {
   const days = await getDays();
-  const list = document.getElementById("hist-list");
+  const list = document.getElementById("dayList");
   list.innerHTML = "";
-  if(!days.length){ list.innerHTML = '<p style="color:#9ca3af;font-size:13px">No history yet</p>'; }
-  days.forEach(d=>{
-    const el = document.createElement("div");
-    el.className = "hist-item";
-    const label = d === TEE_DATE ? `${d} (today)` : d;
-    el.textContent = label;
-    el.onclick = ()=>{ switchDate(d); closeHistory(); };
-    list.appendChild(el);
+
+  if (days.length === 0) {
+    list.innerHTML = `<p style="color:var(--muted);font-size:12px;text-align:center;padding:20px">No previous days recorded yet</p>`;
+  } else {
+    for (const d of days) {
+      // Try to load state to show mini stats
+      let dayState = {};
+      try {
+        const r = await window.storage.get(stateKey(d), true);
+        dayState = (r && r.value) ? JSON.parse(r.value) : {};
+      } catch(e) {}
+
+      const vals = Object.values(dayState);
+      const g = vals.filter(v=>v.status==="green").length;
+      const a = vals.filter(v=>v.status==="amber").length;
+      const r = vals.filter(v=>v.status==="red").length;
+
+      const isToday = d === TEE_DATE;
+      const label = isToday ? `${d} (today)` : d;
+
+      const div = document.createElement("div");
+      div.className = "day-item";
+      div.innerHTML = `
+        <div>
+          <div class="di-date">${label}</div>
+          <div class="di-stats">🟢 ${g} &nbsp; 🟡 ${a} &nbsp; 🔴 ${r}</div>
+        </div>
+        <div class="di-arrow">›</div>`;
+      div.onclick = () => viewDay(d);
+      list.appendChild(div);
+    }
+  }
+  openModal("dayModal");
+}
+
+async function viewDay(date) {
+  closeModal("dayModal");
+  // Open in new tab with ?date= param
+  const url = location.href.split("?")[0] + `?date=${date}`;
+  window.open(url, "_blank");
+}
+
+// ═══════════════════════════════════════════════════════
+//  SHARE MODAL
+// ═══════════════════════════════════════════════════════
+function openShareModal() {
+  const base = location.href.split("?")[0];
+  const url = `${base}?view=1`;
+  document.getElementById("shareUrlBox").textContent = url;
+  openModal("shareModal");
+}
+function copyShareUrl() {
+  const url = document.getElementById("shareUrlBox").textContent;
+  navigator.clipboard.writeText(url)
+    .then(()=>{ showToast("Link copied ✓"); closeModal("shareModal"); })
+    .catch(()=>showToast("Tap and copy the link manually"));
+}
+
+// ═══════════════════════════════════════════════════════
+//  EXPORT CSV
+// ═══════════════════════════════════════════════════════
+function exportCSV() {
+  const lines = [`"SRGC Pace of Play — ${activeDate}"`, "Time,Players,Status,Marked,Notes"];
+  activeTee.forEach(r=>{
+    if(r.reserved||r.players.length===0) return;
+    const s=state[r.time]||{};
+    lines.push(`"${r.time}","${r.players.join(" / ")}","${s.status||"unchecked"}","${s.stamp||""}","${(s.note||"").replace(/,/g,";")}"`);
   });
-  document.getElementById("hist-modal").classList.add("open");
-}
-function closeHistory(){ document.getElementById("hist-modal").classList.remove("open"); }
-
-async function switchDate(date){
-  activeDate = date;
-  await loadState(date);
-  await loadFullTee(date);
-  document.getElementById("hdr-date").textContent = formatDate(date);
-  render();
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([lines.join("\n")],{type:"text/csv"}));
+  a.download=`SRGC_PaceOfPlay_${activeDate.replace(/-/g,"")}.csv`;
+  a.click();
+  showToast("CSV exported ✓");
 }
 
-function formatDate(d){
-  const dt = new Date(d+"T12:00:00");
-  return dt.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
-}
+// ═══════════════════════════════════════════════════════
+//  MODAL HELPERS
+// ═══════════════════════════════════════════════════════
+function openModal(id) { document.getElementById(id).classList.add("open"); }
+function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+// Close on backdrop tap
+document.querySelectorAll(".modal-bg").forEach(bg=>{
+  bg.addEventListener("click", e=>{ if(e.target===bg) bg.classList.remove("open"); });
+});
 
-// ══════════════════════════════════════════════
-//  CSV EXPORT
-// ══════════════════════════════════════════════
-function exportCSV(){
-  const rows = [["Time","Players","Status","Note","Updated"]];
-  tee.forEach(g=>{
-    if(g.reserved) return;
-    const id = groupId(g);
-    const s = state[id]||{};
-    const names = (g.players||[]).map(p=>p.n).join("; ");
-    const tl = s.tl||"—";
-    rows.push([g.t, names, tl, s.note||"", s.ts||""]);
-  });
-  const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
-  const blob = new Blob([csv],{type:"text/csv"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href=url; a.download=`SRGC_Marshal_${activeDate}.csv`; a.click();
-  URL.revokeObjectURL(url);
-  showToast("CSV exported");
-}
-
-// ══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 //  TOAST
-// ══════════════════════════════════════════════
-function showToast(msg){
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"), 2200);
+// ═══════════════════════════════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove("show"),2600);
 }
 
-// ══════════════════════════════════════════════
-//  BOOT
-// ══════════════════════════════════════════════
-init();
+// ═══════════════════════════════════════════════════════
+//  POLLING — live sync for committee view
+// ═══════════════════════════════════════════════════════
+setInterval(async()=>{
+  try {
+    const r = await window.storage.get(stateKey(activeDate), true);
+    if (!r || !r.value) return;
+    const loaded = JSON.parse(r.value);
+    if (JSON.stringify(loaded) !== JSON.stringify(state)) {
+      state = IS_RO ? loaded : Object.assign({}, loaded, state);
+      buildTable();
+      if (IS_RO) showToast("↻ Updated");
+    }
+    setSyncState("live");
+  } catch(e) {}
+}, IS_RO ? 8000 : 20000);
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+(async ()=>{
+  setSyncState("saving");
+
+  // If viewing a historical date via ?date=
+  if (VIEWING_DATE) {
+    activeDate = VIEWING_DATE;
+    document.getElementById("datePill").textContent = VIEWING_DATE;
+    document.getElementById("modeText").textContent = `📅 Viewing ${VIEWING_DATE}`;
+    document.getElementById("modeBanner").classList.add("readonly");
+    document.body.classList.add("readonly");
+  }
+
+  await loadState(activeDate);
+  activeTee = await loadFullTee(activeDate);
+  buildTable();
+  await registerDay(TEE_DATE); // always register today
+})();
 </script>
-</body>
-</html>
+
+
+</body></html>
