@@ -797,12 +797,29 @@ document.getElementById("datePill").textContent = TEE_LABEL;
 
 // ═══════════════════════════════════════════════════════
 //  STORAGE KEYS
-//  state_YYYY-MM-DD  = pace data per day (shared=true)
-//  tee_YYYY-MM-DD    = tee additions per day (shared=true)
 // ═══════════════════════════════════════════════════════
-function stateKey(date) { return `srgc_state_${date}`; }
-function teeKey(date)   { return `srgc_tee_${date}`; }
-function daysKey()      { return `srgc_days_index`; }
+//  FIREBASE CONFIG
+// ═══════════════════════════════════════════════════════
+const FB_URL = "https://srgc-marshal-default-rtdb.europe-west1.firebasedatabase.app";
+
+async function fbSet(path, data) {
+  const res = await fetch(`${FB_URL}/${path}.json`, {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error("Firebase write failed");
+}
+
+async function fbGet(path) {
+  const res = await fetch(`${FB_URL}/${path}.json`);
+  if (!res.ok) throw new Error("Firebase read failed");
+  return await res.json();
+}
+
+function stateKey(date) { return `state_${date.replace(/-/g,"_")}`; }
+function teeKey(date)   { return `tee_${date.replace(/-/g,"_")}`; }
+function daysKey()      { return `days_index`; }
 
 // ═══════════════════════════════════════════════════════
 //  STATE  { "07:25": { status, note, stamp } }
@@ -823,29 +840,29 @@ function setSyncState(s) {
 }
 
 // ═══════════════════════════════════════════════════════
-//  PERSIST — save & load via window.storage (shared)
+//  PERSIST — save & load via Firebase Realtime Database
 //  Falls back to localStorage silently
 // ═══════════════════════════════════════════════════════
 async function saveState() {
   setSyncState("saving");
   try {
-    await window.storage.set(stateKey(activeDate), JSON.stringify(state), true);
+    await fbSet(`srgc/${stateKey(activeDate)}`, state);
     await registerDay(activeDate);
     setSyncState("live");
   } catch(e) {
-    try { localStorage.setItem(stateKey(activeDate), JSON.stringify(state)); } catch(_){}
+    try { localStorage.setItem(`srgc_${stateKey(activeDate)}`, JSON.stringify(state)); } catch(_){}
     setSyncState("err");
   }
 }
 
 async function loadState(date) {
   try {
-    const r = await window.storage.get(stateKey(date), true);
-    state = (r && r.value) ? JSON.parse(r.value) : {};
+    const data = await fbGet(`srgc/${stateKey(date)}`);
+    state = data || {};
     setSyncState("live");
   } catch(e) {
     try {
-      const ls = localStorage.getItem(stateKey(date));
+      const ls = localStorage.getItem(`srgc_${stateKey(date)}`);
       state = ls ? JSON.parse(ls) : {};
     } catch(_) { state = {}; }
     setSyncState("err");
@@ -854,19 +871,19 @@ async function loadState(date) {
 
 async function saveExtraGroups(date, extras) {
   try {
-    await window.storage.set(teeKey(date), JSON.stringify(extras), true);
+    await fbSet(`srgc/${teeKey(date)}`, extras);
   } catch(e) {
-    try { localStorage.setItem(teeKey(date), JSON.stringify(extras)); } catch(_){}
+    try { localStorage.setItem(`srgc_${teeKey(date)}`, JSON.stringify(extras)); } catch(_){}
   }
 }
 
 async function loadExtraGroups(date) {
   try {
-    const r = await window.storage.get(teeKey(date), true);
-    return (r && r.value) ? JSON.parse(r.value) : [];
+    const data = await fbGet(`srgc/${teeKey(date)}`);
+    return Array.isArray(data) ? data : [];
   } catch(e) {
     try {
-      const ls = localStorage.getItem(teeKey(date));
+      const ls = localStorage.getItem(`srgc_${teeKey(date)}`);
       return ls ? JSON.parse(ls) : [];
     } catch(_) { return []; }
   }
@@ -875,31 +892,30 @@ async function loadExtraGroups(date) {
 // ─── Day index: keeps track of all dates that have data ───
 async function registerDay(date) {
   try {
-    const r = await window.storage.get(daysKey(), true);
-    let days = (r && r.value) ? JSON.parse(r.value) : [];
+    const data = await fbGet(`srgc/${daysKey()}`);
+    let days = Array.isArray(data) ? data : [];
     if (!days.includes(date)) {
       days.push(date);
       days.sort().reverse();
-      await window.storage.set(daysKey(), JSON.stringify(days), true);
+      await fbSet(`srgc/${daysKey()}`, days);
     }
   } catch(e) {
     try {
-      let days = JSON.parse(localStorage.getItem(daysKey())||"[]");
+      let days = JSON.parse(localStorage.getItem("srgc_days")||"[]");
       if (!days.includes(date)) { days.push(date); days.sort().reverse(); }
-      localStorage.setItem(daysKey(), JSON.stringify(days));
+      localStorage.setItem("srgc_days", JSON.stringify(days));
     } catch(_){}
   }
 }
 
 async function getDays() {
   try {
-    const r = await window.storage.get(daysKey(), true);
-    return (r && r.value) ? JSON.parse(r.value) : [TEE_DATE];
+    const data = await fbGet(`srgc/${daysKey()}`);
+    return Array.isArray(data) ? data : [TEE_DATE];
   } catch(e) {
-    try { return JSON.parse(localStorage.getItem(daysKey())||`["${TEE_DATE}"]`); } catch(_) { return [TEE_DATE]; }
+    try { return JSON.parse(localStorage.getItem("srgc_days")||`["${TEE_DATE}"]`); } catch(_) { return [TEE_DATE]; }
   }
 }
-
 // ─── Merge base tee + any extras saved for this date ───
 let extraGroups = []; // additions made in-app for activeDate
 
@@ -1100,8 +1116,7 @@ async function openDayModal() {
       // Try to load state to show mini stats
       let dayState = {};
       try {
-        const r = await window.storage.get(stateKey(d), true);
-        dayState = (r && r.value) ? JSON.parse(r.value) : {};
+        dayState = await fbGet(`srgc/${stateKey(d)}`) || {};
       } catch(e) {}
 
       const vals = Object.values(dayState);
@@ -1193,9 +1208,8 @@ function showToast(msg) {
 // ═══════════════════════════════════════════════════════
 setInterval(async()=>{
   try {
-    const r = await window.storage.get(stateKey(activeDate), true);
-    if (!r || !r.value) return;
-    const loaded = JSON.parse(r.value);
+    const loaded = await fbGet(`srgc/${stateKey(activeDate)}`);
+    if (!loaded) return;
     if (JSON.stringify(loaded) !== JSON.stringify(state)) {
       state = IS_RO ? loaded : Object.assign({}, loaded, state);
       buildTable();
