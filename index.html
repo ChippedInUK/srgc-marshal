@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>SRGC Marshal Tracker — 18 Apr 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1f6b3a;--green-light:#52b788;--green-bg:#e8f5ee;
+  --amber:#d97706;--amber-bg:#fef3c7;
+  --red:#b91c1c;--red-bg:#fee2e2;
+  --grey:#6b7280;--grey-bg:#f3f4f6;
+  --bg:#f0f4f1;--card:#fff;--text:#111827;--muted:#6b7280;
+  --border:#e5e7eb;--header:#0f2d1a;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+header{background:var(--header);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:3px solid var(--green-light)}
+header h1{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.1}
+header .sub{font-size:10px;color:#8fbc9e;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.sync-wrap{display:flex;align-items:center;gap:5px;font-size:10px;color:#8fbc9e}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:#8fbc9e}
+.sync-dot.live{background:#4ade80;box-shadow:0 0 4px #4ade80}
+.sync-dot.saving{background:#fbbf24;animation:pulse 1s infinite}
+.sync-dot.err{background:#f87171}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn:hover{background:rgba(255,255,255,.22)}
+.btn.primary{background:var(--green-light);border-color:var(--green-light);color:#fff}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px 12px;background:var(--header)}
+.sum-card{background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;text-align:center}
+.sum-val{font-size:22px;font-weight:700;color:#fff;line-height:1}
+.sum-lbl{font-size:10px;color:#8fbc9e;text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+.sum-card.s-green .sum-val{color:#4ade80}
+.sum-card.s-amber .sum-val{color:#fbbf24}
+.sum-card.s-red .sum-val{color:#f87171}
+.toolbar{padding:8px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.filter-btn{background:var(--grey-bg);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;font-family:inherit}
+.filter-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+.search{border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:12px;font-family:inherit;color:var(--text);background:#fff;width:130px}
+.add-btn{margin-left:auto;background:var(--green);color:#fff;border:none;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600}
+
+/* Group cards */
+.groups{padding:8px 12px;display:flex;flex-direction:column;gap:6px}
+.group-card{background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden;transition:box-shadow .15s}
+.group-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.gc-head{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer;user-select:none}
+.gc-time{font-size:13px;font-weight:700;color:var(--green);min-width:42px}
+.gc-players{flex:1;font-size:12px;color:var(--text);line-height:1.5}
+.gc-count{font-size:11px;color:var(--muted);min-width:18px;text-align:right}
+.gc-tl{display:flex;gap:4px;margin-left:4px}
+.tl-btn{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;font-size:0;flex-shrink:0;transition:transform .1s}
+.tl-btn:active{transform:scale(.88)}
+.tl-btn.tl-green{background:var(--green-light)}
+.tl-btn.tl-amber{background:var(--amber)}
+.tl-btn.tl-red{background:var(--red)}
+.tl-btn.tl-grey{background:#d1d5db}
+.tl-btn.selected{border-color:#111;box-shadow:0 0 0 2px rgba(0,0,0,.25)}
+.gc-body{border-top:1px solid var(--border);padding:8px 10px;display:none}
+.gc-body.open{display:block}
+.gc-note{width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:12px;font-family:inherit;color:var(--text);resize:none;min-height:40px}
+.gc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:10px;color:var(--muted)}
+.badge{display:inline-block;font-size:10px;border-radius:3px;padding:1px 4px;font-weight:600;margin-left:3px}
+.badge-M{background:#dbeafe;color:#1e40af}
+.badge-V{background:#fef3c7;color:#92400e}
+.badge-S{background:#dcfce7;color:#166534}
+.reserved-card{background:#f9fafb;border:1px dashed var(--border);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--muted);font-style:italic;display:flex;align-items:center;gap:8px}
+.status-bar{height:4px;width:100%;flex-shrink:0}
+.sb-green{background:var(--green-light)}
+.sb-amber{background:var(--amber)}
+.sb-red{background:var(--red)}
+.sb-grey{background:#e5e7eb}
+
+/* Committee view */
+body.committee .add-btn,body.committee .gc-note,body.committee .gc-body,body.committee .tl-btn,body.committee .filter-btn,body.committee .search,body.committee .toolbar .add-btn{pointer-events:none;opacity:.7}
+body.committee header{background:#1a1f2e}
+
+/* Modal */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:20px;width:90%;max-width:380px;max-height:90vh;overflow-y:auto}
+.modal h2{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--text)}
+.modal label{display:block;font-size:12px;color:var(--muted);margin-bottom:3px;margin-top:10px}
+.modal input,.modal select,.modal textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-size:13px;font-family:inherit;color:var(--text)}
+.modal textarea{resize:vertical;min-height:60px}
+.modal-btns{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+.mbtn{padding:7px 16px;border-radius:7px;font-size:13px;cursor:pointer;font-family:inherit;border:1px solid var(--border)}
+.mbtn.ok{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* History modal */
+.hist-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.hist-item{padding:10px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px}
+.hist-item:hover{background:var(--green-bg)}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:8px 18px;border-radius:20px;font-size:12px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+/* View mode banner */
+.view-banner{background:var(--amber);color:#fff;text-align:center;font-size:11px;padding:4px;font-weight:600;letter-spacing:.5px}
+
+@media(max-width:380px){
+  .summary{grid-template-columns:repeat(2,1fr)}
+  header h1{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<div id="view-banner" class="view-banner" style="display:none">COMMITTEE VIEW — READ ONLY</div>
+
+<header>
+  <div>
+    <div class="h1">
+      <h1>SRGC Marshal</h1>
+      <div class="sub" id="hdr-date">18 April 2026</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="sync-wrap">
+      <div class="sync-dot" id="sync-dot"></div>
+      <span id="sync-lbl">—</span>
+    </div>
+    <button class="btn" onclick="openHistory()">📅 History</button>
+    <button class="btn primary" onclick="exportCSV()">Export CSV</button>
+  </div>
+</header>
+
+<div class="summary">
+  <div class="sum-card"><div class="sum-val" id="s-total">0</div><div class="sum-lbl">Groups</div></div>
+  <div class="sum-card s-green"><div class="sum-val" id="s-green">0</div><div class="sum-lbl">On Time</div></div>
+  <div class="sum-card s-amber"><div class="sum-val" id="s-amber">0</div><div class="sum-lbl">Slow</div></div>
+  <div class="sum-card s-red"><div class="sum-val" id="s-red">0</div><div class="sum-lbl">Action</div></div>
+</div>
+
+<div class="toolbar">
+  <button class="filter-btn active" data-f="all" onclick="setFilter('all',this)">All</button>
+  <button class="filter-btn" data-f="green" onclick="setFilter('green',this)">🟢</button>
+  <button class="filter-btn" data-f="amber" onclick="setFilter('amber',this)">🟡</button>
+  <button class="filter-btn" data-f="red" onclick="setFilter('red',this)">🔴</button>
+  <button class="filter-btn" data-f="visitor" onclick="setFilter('visitor',this)">Visitors</button>
+  <input class="search" type="text" placeholder="Search…" id="search-inp" oninput="render()">
+  <button class="add-btn" onclick="openAddModal()">+ Group</button>
+</div>
+
+<div class="groups" id="groups-wrap"></div>
+
+<!-- Add group modal -->
+<div class="modal-bg" id="add-modal">
+  <div class="modal">
+    <h2>Add Group</h2>
+    <label>Tee time</label>
+    <input type="time" id="m-time">
+    <label>Players (one per line, prefix V: for visitor)</label>
+    <textarea id="m-players" placeholder="John Smith&#10;V: Jane Visitor"></textarea>
+    <div class="modal-btns">
+      <button class="mbtn" onclick="closeAddModal()">Cancel</button>
+      <button class="mbtn ok" onclick="submitAdd()">Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- History modal -->
+<div class="modal-bg" id="hist-modal">
+  <div class="modal">
+    <h2>Day History</h2>
+    <div class="hist-list" id="hist-list"></div>
+    <div class="modal-btns">
+      <button class="mbtn" onclick="closeHistory()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════
+const TEE_DATE = "2026-04-18";
+const isCommittee = new URLSearchParams(location.search).has("view");
+
+if (isCommittee) {
+  document.body.classList.add("committee");
+  document.getElementById("view-banner").style.display = "block";
+}
+
+// ══════════════════════════════════════════════
+//  TEE DATA — 18 Apr 2026
+// ══════════════════════════════════════════════
+const BASE_TEE = [
+  {t:"06:45",players:[{n:"Michael Heath",ty:"M"},{n:"Martin Kerry",ty:"M"}]},
+  {t:"06:53",players:[{n:"Mark Schiavi",ty:"M"},{n:"David Doncaster",ty:"M"},{n:"Paul Thistlewood",ty:"M"},{n:"Ian Bruce",ty:"M"}]},
+  {t:"07:01",players:[{n:"Stan Watson",ty:"M"},{n:"Sam Duxbry",ty:"V"}]},
+  {t:"07:09",players:[{n:"Martin Harvey",ty:"M"},{n:"Ben Harvey",ty:"M"},{n:"George Beadle",ty:"M"},{n:"Liam Gales",ty:"M"}]},
+  {t:"07:17",players:[{n:"Leo Novakovic",ty:"M"},{n:"Tom Edmondson Matthews",ty:"V"},{n:"Michail Michailou",ty:"V"}]},
+  {t:"07:25",players:[{n:"Michael Killen",ty:"M"},{n:"Jonathan Green",ty:"M"}]},
+  {t:"07:33",players:[{n:"David Hardingham",ty:"M"},{n:"Peter Atkinson",ty:"M"},{n:"Clive Breedon",ty:"M"},{n:"Phil Hewes",ty:"M"}]},
+  {t:"07:41",players:[{n:"Andrew Gordon",ty:"M"},{n:"Liam Waddingham",ty:"M"},{n:"Mark Kokocinski",ty:"M"},{n:"Julian Smith",ty:"M"}]},
+  {t:"07:49",players:[{n:"Steve Roffe",ty:"M"},{n:"Jonathan Brett",ty:"M"},{n:"Oliver Brett",ty:"M"},{n:"James Roffe",ty:"M"}]},
+  {t:"07:57",players:[{n:"David Ramshaw",ty:"M"},{n:"Nick Begy",ty:"M"},{n:"Simon Morley",ty:"M"},{n:"Graeme North",ty:"M"}]},
+  {t:"08:05",players:[{n:"Mark Durno",ty:"M"},{n:"Mark Owen",ty:"M"},{n:"Max Braime",ty:"M"},{n:"James Delplanque",ty:"M"}]},
+  {t:"08:13",players:[{n:"John Elliott",ty:"M"},{n:"Angus Owen",ty:"M"},{n:"Paul Hutchings",ty:"M"},{n:"Jason Jones",ty:"M"}]},
+  {t:"08:21",players:[{n:"Riley Haw",ty:"M"},{n:"Robin Harris",ty:"M"},{n:"Stephen Hutchings",ty:"M"},{n:"Taylor Simpson",ty:"M"}]},
+  {t:"08:29",players:[{n:"Richard Dexter",ty:"M"},{n:"Robert Griffin",ty:"M"},{n:"Scott Budding",ty:"M"},{n:"Ian Braime",ty:"M"}]},
+  {t:"08:37",players:[{n:"David Simpson",ty:"M"},{n:"Neil Tee-Boon",ty:"M"},{n:"Martin Harris",ty:"M"},{n:"Kevin Haw",ty:"M"}]},
+  {t:"08:45",players:[{n:"Andrew Tildesley",ty:"M"},{n:"David McKendrick",ty:"M"}]},
+  {t:"08:53",players:[{n:"Mike Catlin",ty:"M"},{n:"Chris Vose",ty:"M"}]},
+  {t:"09:01",players:[{n:"Antony Dawson",ty:"M"},{n:"Eddie Oswin",ty:"M"},{n:"Malcolm Williams",ty:"M"},{n:"Antony Halls",ty:"M"}]},
+  {t:"09:09",players:[]},
+  {t:"09:17",players:[{n:"Roy Thompson",ty:"M"},{n:"James Morgan",ty:"M"},{n:"Mark Jordan",ty:"M"},{n:"Garry Sentance",ty:"M"}]},
+  {t:"09:25",players:[{n:"Richard Morris",ty:"M"},{n:"Jill Morris",ty:"M"},{n:"David Hallam",ty:"M"},{n:"Tim Parr",ty:"M"}]},
+  {t:"09:33",players:[{n:"Brian Draper",ty:"M"},{n:"Alan Church",ty:"M"}]},
+  {t:"09:41",players:[{n:"Ian Hickman",ty:"M"},{n:"Stephen Burton",ty:"M"},{n:"Andrew Spencer",ty:"M"},{n:"Tim Kimm",ty:"M"}]},
+  {t:"09:49",players:[{n:"Bert Tregidgo",ty:"M"},{n:"Jim McArthur",ty:"M"},{n:"Arthur Wheeler",ty:"M"}]},
+  {t:"09:57",players:[{n:"Thomas Greenfield",ty:"M"},{n:"Nick Watson",ty:"M"},{n:"Oliver Hand",ty:"M"},{n:"Adam Footitt",ty:"M"}]},
+  {t:"10:05",players:[{n:"Roger Rawson",ty:"M"},{n:"Daniel Ellington",ty:"M"},{n:"Thomas Rigby",ty:"M"},{n:"Rory Thomson",ty:"M"}]},
+  {t:"10:13",players:[{n:"Ben Rawson",ty:"M"},{n:"Max Braime",ty:"M"},{n:"Oliver Brewill",ty:"M"},{n:"Matthew Brewill",ty:"M"}]},
+  {t:"10:21",players:[{n:"Andrew Queen",ty:"M"},{n:"Mark Goodwin",ty:"M"},{n:"Nigel Illingworth",ty:"M"},{n:"Peter Sargent",ty:"M"}]},
+  {t:"10:29",players:[{n:"Simon Mulvey",ty:"M"},{n:"Paul Knapp",ty:"M"},{n:"Robert Clifton",ty:"M"},{n:"Asa Lowther",ty:"M"}]},
+  {t:"10:37",players:[{n:"David Esswood",ty:"M"},{n:"Brian Ayto",ty:"M"},{n:"Michael Legge",ty:"M"},{n:"Peter Jaggard",ty:"M"}]},
+  {t:"10:45",players:[{n:"Mark Bailey",ty:"M"},{n:"Andrew Burley",ty:"M"},{n:"James Burley",ty:"M"},{n:"Nicholas Croft",ty:"S"}]},
+  {t:"10:53",players:[{n:"Anthony Meakin",ty:"M"},{n:"Steve Cawser",ty:"M"},{n:"Martin Cawser",ty:"M"},{n:"Jay Trussler",ty:"M"}]},
+  {t:"11:01",players:[{n:"Jake Wilson",ty:"M"},{n:"Maxim Green",ty:"M"},{n:"George Mann",ty:"V"}]},
+  {t:"11:09",reserved:"Turnor Cup"},
+  {t:"11:17",reserved:"Turnor Cup"},
+  {t:"11:25",reserved:"Turnor Cup"},
+  {t:"11:33",reserved:"Turnor Cup"},
+  {t:"11:41",reserved:"Turnor Cup"},
+  {t:"11:49",reserved:"Turnor Cup"},
+  {t:"11:57",reserved:"Turnor Cup"},
+  {t:"12:05",players:[{n:"Joe Jacobs",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"}]},
+  {t:"12:13",players:[{n:"Jim Broell",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"},{n:"Guest Player",ty:"V"}]},
+  {t:"12:21",players:[{n:"Simon Hodgson",ty:"M"},{n:"Mark Tinkler",ty:"M"},{n:"Alistair Brook",ty:"M"},{n:"Mark Worthington",ty:"M"}]},
+  {t:"12:29",players:[{n:"Garreth Smith",ty:"M"},{n:"Jake Smith",ty:"M"},{n:"Luke Smith",ty:"M"}]},
+  {t:"12:37",players:[{n:"Harry Nicholls",ty:"M"},{n:"James Turnbull",ty:"M"},{n:"Andrew Watson",ty:"M"}]},
+];
+
+// ══════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════
+let state = {};           // keyed by group id: {tl, note, ts}
+let extraGroups = [];     // added via + button
+let activeDate = TEE_DATE;
+let filterMode = "all";
+let tee = [];             // merged BASE_TEE + extraGroups
+
+function stateKey(d){ return `srgc_state_${d}`; }
+function teeKey(d)  { return `srgc_extras_${d}`; }
+function daysKey()  { return `srgc_days`; }
+
+function groupId(g){ return g.id || g.t; }
+
+// ══════════════════════════════════════════════
+//  SYNC INDICATOR
+// ══════════════════════════════════════════════
+function setSyncState(s){
+  const dot = document.getElementById("sync-dot");
+  const lbl = document.getElementById("sync-lbl");
+  dot.className = "sync-dot";
+  if(s==="live")  { dot.classList.add("live");   lbl.textContent = isCommittee ? "Live · auto-refresh" : "Synced"; }
+  if(s==="saving"){ dot.classList.add("saving"); lbl.textContent = "Saving…"; }
+  if(s==="err")   { dot.classList.add("err");    lbl.textContent = "Local only"; }
+}
+
+// ══════════════════════════════════════════════
+//  STORAGE
+// ══════════════════════════════════════════════
+async function saveState(){
+  setSyncState("saving");
+  try {
+    await window.storage.set(stateKey(activeDate), JSON.stringify(state), true);
+    await registerDay(activeDate);
+    setSyncState("live");
+  } catch(e){
+    try { localStorage.setItem(stateKey(activeDate), JSON.stringify(state)); } catch(_){}
+    setSyncState("err");
+  }
+}
+
+async function loadState(date){
+  try {
+    const r = await window.storage.get(stateKey(date), true);
+    state = (r && r.value) ? JSON.parse(r.value) : {};
+    setSyncState("live");
+  } catch(e){
+    try { const ls = localStorage.getItem(stateKey(date)); state = ls ? JSON.parse(ls) : {}; } catch(_){ state = {}; }
+    setSyncState("err");
+  }
+}
+
+async function saveExtras(date, extras){
+  try { await window.storage.set(teeKey(date), JSON.stringify(extras), true); }
+  catch(e){ try { localStorage.setItem(teeKey(date), JSON.stringify(extras)); } catch(_){} }
+}
+
+async function loadExtras(date){
+  try {
+    const r = await window.storage.get(teeKey(date), true);
+    return (r && r.value) ? JSON.parse(r.value) : [];
+  } catch(e){
+    try { const ls = localStorage.getItem(teeKey(date)); return ls ? JSON.parse(ls) : []; }
+    catch(_){ return []; }
+  }
+}
+
+async function registerDay(date){
+  try {
+    const r = await window.storage.get(daysKey(), true);
+    let days = (r && r.value) ? JSON.parse(r.value) : [];
+    if(!days.includes(date)){ days.push(date); days.sort().reverse(); await window.storage.set(daysKey(), JSON.stringify(days), true); }
+  } catch(e){
+    try {
+      let days = JSON.parse(localStorage.getItem(daysKey())||"[]");
+      if(!days.includes(date)){ days.push(date); days.sort().reverse(); }
+      localStorage.setItem(daysKey(), JSON.stringify(days));
+    } catch(_){}
+  }
+}
+
+async function getDays(){
+  try { const r = await window.storage.get(daysKey(), true); return (r && r.value) ? JSON.parse(r.value) : [TEE_DATE]; }
+  catch(e){ try { return JSON.parse(localStorage.getItem(daysKey())||`["${TEE_DATE}"]`); } catch(_){ return [TEE_DATE]; } }
+}
+
+// ══════════════════════════════════════════════
+//  LOAD / INIT
+// ══════════════════════════════════════════════
+async function loadFullTee(date){
+  extraGroups = await loadExtras(date);
+  tee = date === TEE_DATE
+    ? [...BASE_TEE, ...extraGroups].sort((a,b)=>a.t.localeCompare(b.t))
+    : [...extraGroups].sort((a,b)=>a.t.localeCompare(b.t));
+}
+
+async function init(){
+  await loadState(activeDate);
+  await loadFullTee(activeDate);
+  render();
+  if(isCommittee) setInterval(async()=>{ await loadState(activeDate); render(); }, 15000);
+}
+
+// ══════════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════════
+function render(){
+  const wrap = document.getElementById("groups-wrap");
+  const search = (document.getElementById("search-inp").value||"").toLowerCase();
+
+  let totalGroups=0, cGreen=0, cAmber=0, cRed=0;
+
+  tee.forEach(g=>{
+    if(!g.reserved && g.players && g.players.length>0){
+      totalGroups++;
+      const id = groupId(g);
+      const s = state[id]||{};
+      if(s.tl==="green") cGreen++;
+      else if(s.tl==="amber") cAmber++;
+      else if(s.tl==="red") cRed++;
+    }
+  });
+
+  document.getElementById("s-total").textContent = totalGroups;
+  document.getElementById("s-green").textContent = cGreen;
+  document.getElementById("s-amber").textContent = cAmber;
+  document.getElementById("s-red").textContent = cRed;
+
+  wrap.innerHTML = "";
+
+  tee.forEach((g, idx)=>{
+    if(g.reserved){
+      if(filterMode !== "all") return;
+      const d = document.createElement("div");
+      d.className = "reserved-card";
+      d.innerHTML = `<span style="color:#9ca3af">⬜</span> <span>${g.t} — Reserved: ${g.reserved}</span>`;
+      wrap.appendChild(d);
+      return;
+    }
+
+    if(!g.players || g.players.length === 0){
+      if(filterMode !== "all") return;
+    }
+
+    const id = groupId(g);
+    const s = state[id] || {};
+    const tl = s.tl || "grey";
+
+    // filter
+    if(filterMode === "green" && tl !== "green") return;
+    if(filterMode === "amber" && tl !== "amber") return;
+    if(filterMode === "red"   && tl !== "red")   return;
+    if(filterMode === "visitor" && !g.players.some(p=>p.ty==="V")) return;
+
+    if(search){
+      const match = g.players.some(p=>p.n.toLowerCase().includes(search)) || g.t.includes(search);
+      if(!match) return;
+    }
+
+    const playerHtml = g.players.map(p=>
+      `<span class="badge badge-${p.ty}">${p.ty}</span> ${p.n}`
+    ).join("  ");
+
+    const sbClass = tl==="green"?"sb-green":tl==="amber"?"sb-amber":tl==="red"?"sb-red":"sb-grey";
+    const tsHtml = s.ts ? `<span>Updated ${s.ts}</span>` : `<span></span>`;
+    const noteVal = (s.note||"").replace(/"/g,"&quot;");
+    const isOpen = s._open ? "open" : "";
+
+    const card = document.createElement("div");
+    card.className = "group-card";
+    card.innerHTML = `
+      <div class="status-bar ${sbClass}"></div>
+      <div class="gc-head" onclick="toggleBody('${id}')">
+        <span class="gc-time">${g.t}</span>
+        <span class="gc-players">${playerHtml}</span>
+        <span class="gc-count">${g.players.length}</span>
+        <div class="gc-tl">
+          <button class="tl-btn tl-green ${tl==='green'?'selected':''}" onclick="setTL(event,'${id}','green')" title="On time"></button>
+          <button class="tl-btn tl-amber ${tl==='amber'?'selected':''}" onclick="setTL(event,'${id}','amber')" title="Slow"></button>
+          <button class="tl-btn tl-red ${tl==='red'?'selected':''}" onclick="setTL(event,'${id}','red')" title="Action needed"></button>
+        </div>
+      </div>
+      <div class="gc-body ${isOpen}" id="body-${id}">
+        <textarea class="gc-note" placeholder="Marshal note…" oninput="setNote('${id}',this.value)">${s.note||""}</textarea>
+        <div class="gc-meta">${tsHtml}<span>${g.players.length} player${g.players.length!==1?'s':''}</span></div>
+      </div>`;
+    wrap.appendChild(card);
+  });
+}
+
+function toggleBody(id){
+  const s = state[id] || {};
+  s._open = !s._open;
+  state[id] = s;
+  render();
+}
+
+function setTL(e, id, color){
+  e.stopPropagation();
+  if(isCommittee) return;
+  const s = state[id] || {};
+  s.tl = s.tl === color ? "grey" : color;
+  s.ts = new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  state[id] = s;
+  saveState();
+  render();
+}
+
+function setNote(id, val){
+  if(isCommittee) return;
+  const s = state[id] || {};
+  s.note = val;
+  state[id] = s;
+  saveState();
+}
+
+// ══════════════════════════════════════════════
+//  FILTER
+// ══════════════════════════════════════════════
+function setFilter(f, btn){
+  filterMode = f;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+// ══════════════════════════════════════════════
+//  ADD GROUP MODAL
+// ══════════════════════════════════════════════
+function openAddModal(){
+  document.getElementById("add-modal").classList.add("open");
+  const now = new Date();
+  document.getElementById("m-time").value = now.toTimeString().slice(0,5);
+  document.getElementById("m-players").value = "";
+}
+function closeAddModal(){ document.getElementById("add-modal").classList.remove("open"); }
+
+async function submitAdd(){
+  const timeVal = document.getElementById("m-time").value;
+  const playersRaw = document.getElementById("m-players").value.trim();
+  if(!timeVal){ showToast("Enter a tee time"); return; }
+  const players = playersRaw ? playersRaw.split("\n").filter(Boolean).map(l=>{
+    const isV = l.trim().toLowerCase().startsWith("v:");
+    const name = l.replace(/^v:\s*/i,"").trim();
+    return {n:name, ty: isV ? "V" : "M"};
+  }) : [];
+  const id = `extra_${timeVal}_${Date.now()}`;
+  const newGroup = {t:timeVal, players, id};
+  extraGroups.push(newGroup);
+  tee = activeDate === TEE_DATE
+    ? [...BASE_TEE, ...extraGroups].sort((a,b)=>a.t.localeCompare(b.t))
+    : [...extraGroups].sort((a,b)=>a.t.localeCompare(b.t));
+  await saveExtras(activeDate, extraGroups);
+  closeAddModal();
+  render();
+  showToast(`Group added at ${timeVal}`);
+}
+
+// ══════════════════════════════════════════════
+//  HISTORY MODAL
+// ══════════════════════════════════════════════
+async function openHistory(){
+  const days = await getDays();
+  const list = document.getElementById("hist-list");
+  list.innerHTML = "";
+  if(!days.length){ list.innerHTML = '<p style="color:#9ca3af;font-size:13px">No history yet</p>'; }
+  days.forEach(d=>{
+    const el = document.createElement("div");
+    el.className = "hist-item";
+    const label = d === TEE_DATE ? `${d} (today)` : d;
+    el.textContent = label;
+    el.onclick = ()=>{ switchDate(d); closeHistory(); };
+    list.appendChild(el);
+  });
+  document.getElementById("hist-modal").classList.add("open");
+}
+function closeHistory(){ document.getElementById("hist-modal").classList.remove("open"); }
+
+async function switchDate(date){
+  activeDate = date;
+  await loadState(date);
+  await loadFullTee(date);
+  document.getElementById("hdr-date").textContent = formatDate(date);
+  render();
+}
+
+function formatDate(d){
+  const dt = new Date(d+"T12:00:00");
+  return dt.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+}
+
+// ══════════════════════════════════════════════
+//  CSV EXPORT
+// ══════════════════════════════════════════════
+function exportCSV(){
+  const rows = [["Time","Players","Status","Note","Updated"]];
+  tee.forEach(g=>{
+    if(g.reserved) return;
+    const id = groupId(g);
+    const s = state[id]||{};
+    const names = (g.players||[]).map(p=>p.n).join("; ");
+    const tl = s.tl||"—";
+    rows.push([g.t, names, tl, s.note||"", s.ts||""]);
+  });
+  const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv],{type:"text/csv"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href=url; a.download=`SRGC_Marshal_${activeDate}.csv`; a.click();
+  URL.revokeObjectURL(url);
+  showToast("CSV exported");
+}
+
+// ══════════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════════
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+// ══════════════════════════════════════════════
+//  BOOT
+// ══════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>
